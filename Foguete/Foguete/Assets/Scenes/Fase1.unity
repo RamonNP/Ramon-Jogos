@@ -2940,7 +2940,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &955724865
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3986,6 +3986,7 @@ MonoBehaviour:
   currenteState: 0
   scoreUpTxt: {fileID: 331343397}
   scoreGameOver: {fileID: 1004348368}
+  maxScoreGameOver: {fileID: 2074450760}
   painelPause: {fileID: 2105877628}
   painelGameOver: {fileID: 955724864}
   preFabs:
@@ -4996,7 +4997,7 @@ PrefabInstance:
     - target: {fileID: 5504344051526948743, guid: 8acd9cc9355f0564492d8935348547b0,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5504344050159923903, guid: 8acd9cc9355f0564492d8935348547b0,
         type: 3}

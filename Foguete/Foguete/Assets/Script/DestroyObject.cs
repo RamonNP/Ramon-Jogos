@@ -33,8 +33,7 @@ public class DestroyObject : MonoBehaviour
         }
         if (collision.CompareTag("Nave")) //(collision.name.Equals("asteroid"))
         {
-            Debug.Log(collision.tag +"NAVEEEEEEEEEEEEEEEEEEEEE");
-            gameController.gameOver();
+            gameController.gameOver(0);
 
         }
     }

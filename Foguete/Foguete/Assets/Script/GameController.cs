@@ -10,10 +10,12 @@ public enum GameState
  
 public class GameController : MonoBehaviour
 {
+
     public GameState currenteState;
     [Header("ScoreTxt")]
     public TextMeshProUGUI scoreUpTxt;
     public TextMeshProUGUI scoreGameOver;
+    public TextMeshProUGUI maxScoreGameOver;
     [Header("Panel")]
     public GameObject painelPause;
     [Header("GameOver")]
@@ -26,7 +28,7 @@ public class GameController : MonoBehaviour
 
     public float intervalObstacle;
     public float nexObstacle = 0f;
-
+    private int scoreMaxSave;
     private int tipelObstacle;
     // Start is called before the first frame update
     void Start()
@@ -82,10 +84,14 @@ public class GameController : MonoBehaviour
             changeState(GameState.GAMEPLAY);
         }
     }
-    public void gameOver()
+    public void gameOver(int score)
     {
         
         painelGameOver.SetActive(true);
+        /*if(score > PlayServiceRamon.GetPlayerScore(GPGSIds.leaderboard_flying_rocket_ranking))
+        {
+            PlayServiceRamon.PostScore((long)score, GPGSIds.leaderboard_flying_rocket_ranking);
+        } */
         //changeState(GameState.GAMEOVER);
     }
     public void changeState(GameState gameState)
@@ -95,5 +101,19 @@ public class GameController : MonoBehaviour
     public void updateTxt(TextMeshProUGUI scoreUpTxt, int value, int mask)
     {
         scoreUpTxt.text = value.ToString().PadLeft(mask, '0');
+    }
+
+    public void saveNewScore(int value)
+    {
+        if(scoreMaxSave < value)
+        {
+            scoreMaxSave = PlayerPrefs.GetInt("scoreMaxSave");
+            if (scoreMaxSave < value)
+            {
+                PlayerPrefs.SetInt("scoreMaxSave", value);
+                scoreMaxSave = value;
+            }
+        }
+        maxScoreGameOver.text = scoreMaxSave.ToString().PadLeft(8, '0');
     }
 }

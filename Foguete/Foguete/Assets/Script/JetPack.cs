@@ -154,6 +154,9 @@ public class JetPack : MonoBehaviour
 
     public void gameOver()
     {
+        //salvar Atual maior que maximo 
+        gameController.saveNewScore(upMax);
+        //FIM
         gameController.updateTxt(gameController.scoreGameOver, upMax, 8);
         gameController.changeState(GameState.GAMEOVER);
         audioController.pauseFxEngine();
@@ -193,7 +196,7 @@ public class JetPack : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(waitTime);
-            gameController.gameOver();
+            gameController.gameOver(upMax);
         }
     }
 
