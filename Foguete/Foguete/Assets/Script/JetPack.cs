@@ -12,6 +12,7 @@ public class JetPack : MonoBehaviour
     private bool dead;
     private Animator naveAnimator;
     public GameObject nave;
+    public GameObject shield;
     public TextMeshProUGUI fuelTxt;
     private Rigidbody2D rb;
     private float jumpForce = 3f;
@@ -22,6 +23,10 @@ public class JetPack : MonoBehaviour
     private float fuel;
     [SerializeField]
     private GameObject fire;
+    [SerializeField]    
+    public GameObject coinParticle;
+    public GameObject FuelParticle;
+    public GameObject ShieldParticle;
     private int upMax;
     private IEnumerator coroutine;
 
@@ -177,14 +182,46 @@ public class JetPack : MonoBehaviour
     {
         if (!dead)
         {
+            Debug.Log(collision.tag);
             if (collision.CompareTag("Meteor")) //(collision.name.Equals("asteroid"))
             {
-                gameOver();
+                if (shield.activeSelf)
+                {
+                    Instantiate(ShieldParticle, transform.position, Quaternion.identity);
+                    audioController.pauseFxEngine();
+                    audioController.playFx(audioController.fxExplosion, 1);
+                    shield.SetActive(false);
+                } else
+                {
+                    gameOver();
+                }
             }
             else if (collision.CompareTag("Fuel"))
             {
                 audioController.playFx(audioController.fxGetFuel, 1);
-                fuel += 10f;
+                fuel += 30f;
+                Instantiate(FuelParticle, collision.transform.position, Quaternion.identity);
+                Destroy(collision.gameObject);
+            }
+            else if (collision.CompareTag("Shield"))
+            {
+                audioController.playFx(audioController.fxGetFuel, 1);
+                Instantiate(ShieldParticle, collision.transform.position, Quaternion.identity);
+                shield.SetActive(true);
+                Destroy(collision.gameObject);
+            }
+            else if (collision.CompareTag("Box"))
+            {
+                audioController.playFx(audioController.fxGetFuel, 1);
+                gameController.CreateBonus(collision.transform.position.y+1);
+                Instantiate(ShieldParticle, transform.position, Quaternion.identity);
+                Destroy(collision.gameObject);
+            }
+            else if (collision.CompareTag("Coin"))
+            {
+                audioController.playFx(audioController.fxGetFuel, 1);
+                Instantiate(coinParticle, collision.transform.position, Quaternion.identity);
+                gameController.addCoin();
                 Destroy(collision.gameObject);
             }
         }

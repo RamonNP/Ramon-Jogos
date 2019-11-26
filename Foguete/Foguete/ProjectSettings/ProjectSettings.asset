@@ -162,7 +162,7 @@ PlayerSettings:
     Android: com.rad.apps.flying.rocket
     Standalone: com.Company.ProductName
   buildNumber: {}
-  AndroidBundleVersionCode: 7
+  AndroidBundleVersionCode: 8
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 28
   AndroidPreferredInstallLocation: 0

@@ -8,6 +8,10 @@ TagManager:
   - Fuel
   - Eixo
   - Nave
+  - Box
+  - Coin
+  - Shield
+  - Bomb
   layers:
   - Default
   - TransparentFX
