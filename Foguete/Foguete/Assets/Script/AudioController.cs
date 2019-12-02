@@ -84,8 +84,8 @@ public class AudioController : MonoBehaviour
 
     IEnumerator changeMusicEnum()
     {
-        //Debug.Log(slider);
-        //Debug.Log(changeScene);
+        Debug.Log(slider);
+        Debug.Log(changeScene);
         if (changeScene)
         {
 

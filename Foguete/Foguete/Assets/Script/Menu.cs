@@ -20,6 +20,7 @@ public class Menu : MonoBehaviour
     }
     public void selectMenu()
     {
+        Debug.Log("QUITTTTTT");
         audioController.changeMusic(audioController.musicFase2, "Menu", true, slider);
     }
     public void clickSom()

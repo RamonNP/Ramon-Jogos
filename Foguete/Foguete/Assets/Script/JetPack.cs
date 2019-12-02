@@ -7,6 +7,10 @@ using System;
 
 public class JetPack : MonoBehaviour
 {
+
+    public GameObject bomb1;
+    public GameObject bomb2;
+    public GameObject bomb3;
     private bool teste = true;
     public GameController gameController;
     private bool dead;
@@ -182,7 +186,7 @@ public class JetPack : MonoBehaviour
     {
         if (!dead)
         {
-            Debug.Log(collision.tag);
+            //Debug.Log(collision.tag);
             if (collision.CompareTag("Meteor")) //(collision.name.Equals("asteroid"))
             {
                 if (shield.activeSelf)
@@ -212,6 +216,7 @@ public class JetPack : MonoBehaviour
             }
             else if (collision.CompareTag("Box"))
             {
+              
                 audioController.playFx(audioController.fxGetFuel, 1);
                 gameController.CreateBonus(collision.transform.position.y+1);
                 Instantiate(ShieldParticle, transform.position, Quaternion.identity);
@@ -219,9 +224,18 @@ public class JetPack : MonoBehaviour
             }
             else if (collision.CompareTag("Coin"))
             {
+                //createBomb();
                 audioController.playFx(audioController.fxGetFuel, 1);
                 Instantiate(coinParticle, collision.transform.position, Quaternion.identity);
                 gameController.addCoin();
+                Destroy(collision.gameObject);
+            }
+            else if (collision.CompareTag("Bomb"))
+            {
+                createBomb();
+                audioController.playFx(audioController.fxGetFuel, 1);
+                //Instantiate(coinParticle, collision.transform.position, Quaternion.identity);
+                //gameController.addCoin();
                 Destroy(collision.gameObject);
             }
         }
@@ -265,4 +279,16 @@ public class JetPack : MonoBehaviour
         }
         return touch;
     }
+    private void createBomb()
+    {
+
+        Debug.Log("createBomb");
+        bomb1.SetActive(true); ;
+        bomb2.SetActive(true); ;
+        bomb3.SetActive(true); ;
+        bomb1.GetComponent<BombScript>().finishBum();
+        bomb2.GetComponent<BombScript>().finishBum();
+        bomb3.GetComponent<BombScript>().finishBum();
+    }
+    
 }

@@ -60,7 +60,7 @@ public class GameController : MonoBehaviour
         //Debug.Log(nexObstacle);
         if (cam.position.y > nexObstacle)
         {
-        Debug.Log("SAVEEEEEEEEEEEE" + currentScore);
+        //Debug.Log("SAVEEEEEEEEEEEE" + currentScore);
             nexObstacle += intervalObstacle;
             if(currentScore < 40)
             {
@@ -91,7 +91,7 @@ public class GameController : MonoBehaviour
     public void pauseGame()
     {
         painelPause.SetActive(!painelPause.activeSelf);
-        Debug.Log(painelPause.activeSelf);
+        //Debug.Log(painelPause.activeSelf);
         if(painelPause.activeSelf)
         {
             audioController.pauseFxEngine();
@@ -168,7 +168,7 @@ public class GameController : MonoBehaviour
         {
             tipelObstacle = 0;
         }
-
+        //tipelObstacle = 3;
         transform.position = new Vector3(0f, corY, 0);
         Instantiate(preFabsBonus[tipelObstacle], transform.position, Quaternion.identity);
         
