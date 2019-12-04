@@ -15,7 +15,7 @@ public class MoveObject : MonoBehaviour
 
     void Start()
     {
-        gameController = 
+        //gameController = 
         initialPosition = transform.position;
     }
 
