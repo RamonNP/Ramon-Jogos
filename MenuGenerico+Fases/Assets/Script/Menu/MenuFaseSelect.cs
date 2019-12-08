@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-public class FaseSelect : MonoBehaviour
+public class MenuFaseSelect : MonoBehaviour
 {
     public GameObject Music;
     public Slider slider;

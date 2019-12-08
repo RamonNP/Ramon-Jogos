@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StarsControl : MonoBehaviour
+public class MenuStarsControl : MonoBehaviour
 {
     public int fase;
 

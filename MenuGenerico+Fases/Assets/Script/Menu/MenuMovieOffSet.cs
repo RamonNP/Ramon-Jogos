@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovieOffSet : MonoBehaviour
+public class MenuMovieOffSet : MonoBehaviour
 {
     private Material materialAtual;
     public float velocidade;
