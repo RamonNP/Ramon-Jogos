@@ -64,9 +64,12 @@ public class MoveObject : MonoBehaviour
                     }
                     else
                     {
+                        if(initialPosition.x != transform.position.x)
+                        {
                         transform.position = new Vector2(initialPosition.x, initialPosition.y);
-                        Debug.Log("Erro" + touchPos.x);
-                        //gameController.addError();
+                            Debug.Log("OPA");
+                            gameController.addError();
+                        }
                     }
                     break;
 
