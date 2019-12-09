@@ -47,4 +47,16 @@ public class GameController : MonoBehaviour
         Debug.Log(" victory ");
         audioController.pauseMusic();
     }
+    public void Reentry()
+    {
+       
+    }
+    public void Menu()
+    {
+
+    }
+    public void Next()
+    {
+
+    }
 }
