@@ -15,7 +15,7 @@ public class MoveObject : MonoBehaviour
 
     void Start()
     {
-        //gameController = 
+        gameController = FindObjectOfType(typeof(GameController)) as GameController;
         initialPosition = transform.position;
     }
 
@@ -54,16 +54,19 @@ public class MoveObject : MonoBehaviour
                     break;
 
                 case TouchPhase.Ended:
-                    if (Mathf.Abs(transform.position.x - place.position.x) <= 0.5f &&
-                       Mathf.Abs(transform.position.y - place.position.y) <= 0.5f)
+                    if (Mathf.Abs(transform.position.x - place.position.x) <= 1.0f &&
+                       Mathf.Abs(transform.position.y - place.position.y) <= 1.0f)
                     {
                         transform.position = new Vector2(place.position.x, place.position.y);
                         locked = true;
-                        transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+                        transform.localScale = new Vector3(1f, 1f, 1f);
+                        gameController.addRight();
                     }
                     else
                     {
                         transform.position = new Vector2(initialPosition.x, initialPosition.y);
+                        Debug.Log("Erro" + touchPos.x);
+                        //gameController.addError();
                     }
                     break;
 

@@ -5,11 +5,10 @@ using UnityEngine.UI;
 
 public class AudioController : MonoBehaviour
 {
-    private Slider slider;
+    public Slider slider;
     private IEnumerator coroutine;
     public AudioSource sMusic;
     public AudioSource sFX;
-    public AudioSource sFXEngine;
 
     //public Slider slider;
 
@@ -22,9 +21,9 @@ public class AudioController : MonoBehaviour
 
     [Header("Sound")]
     public AudioClip fxClick;
-    public AudioClip fxRocket;
-    public AudioClip fxExplosion;
-    public AudioClip fxGetFuel;
+    public AudioClip fxSuccess;
+    public AudioClip fxError;
+    public AudioClip fxVictory;
 
 
     public float maxVol;
@@ -40,17 +39,17 @@ public class AudioController : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
         maxVol = 1;
         minVol = 1;
- 
-        changeMusic(musicTitle, "Menu", false, null);
+        
+
+        changeMusic(musicTitle, "Menu", false);
     }
 
-    public void changeMusic(AudioClip clip, string newScene, bool changeScene, Slider slider)
+    public void changeMusic(AudioClip clip, string newScene, bool changeScene)
     {
         //Debug.Log(slider);
         this.newScene = newScene;
         this.newMusic = clip;
         this.changeScene = changeScene;
-        this.slider = slider;
         coroutine = changeMusicEnum();
         StartCoroutine("changeMusicEnum");
     }
@@ -81,8 +80,8 @@ public class AudioController : MonoBehaviour
 
     IEnumerator changeMusicEnum()
     {
-        //Debug.Log(slider);
-        //Debug.Log(changeScene);
+        Debug.Log(slider);
+        Debug.Log(changeScene);
         if (changeScene)
         {
 
@@ -135,27 +134,9 @@ public class AudioController : MonoBehaviour
         sFX.volume = tempVolume;
         sFX.PlayOneShot(fx);
     }
-    public void playFxEngine(AudioClip fx, float volume)
+    public void pauseMusic()
     {
-        if(!sFXEngine.isPlaying)
-        {
+        sMusic.Pause();
+    }
 
-            float tempVolume = volume;
-            if (volume > maxVol)
-            {
-                tempVolume = maxVol;
-            }
-            sFXEngine.volume = tempVolume;
-            sFXEngine.clip = fx;
-            sFXEngine.Play();
-        }
-    }
-    public void pauseFxEngine()
-    {
-        sFXEngine.Pause();
-    }
-    public void playFxEngine()
-    {
-        sFXEngine.UnPause();
-    }
 }
