@@ -30,7 +30,7 @@ public class MoveObject : MonoBehaviour
                 transform.localScale = new Vector3(1, 1, 1);
             } else
             {
-                transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+                transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
             }
             Touch touch = simulatess();//Input.GetTouch(0); SEM SIMULADOR
 

@@ -30,7 +30,7 @@ public class AudioController : MonoBehaviour
     public float minVol;
 
     private AudioClip newMusic;
-    private string newScene;
+    public string newScene;
     private bool changeScene;
 
     // Start is called before the first frame update
@@ -41,12 +41,20 @@ public class AudioController : MonoBehaviour
         minVol = 1;
         
 
-        changeMusic(musicTitle, "Menu", false);
+        changeMusic(musicTitle, "Menu2", false, null);
     }
 
-    public void changeMusic(AudioClip clip, string newScene, bool changeScene)
+    public void changeMusic(AudioClip clip, string newScene, bool changeScene, Slider slider2)
     {
-        //Debug.Log(slider);
+
+        if (slider2 != null)
+        {
+            slider = slider2;
+        } else
+        {
+            slider = (Slider) FindObjectOfType<Slider>();
+        }
+        Debug.Log(slider);
         this.newScene = newScene;
         this.newMusic = clip;
         this.changeScene = changeScene;

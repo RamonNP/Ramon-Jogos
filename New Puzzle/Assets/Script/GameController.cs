@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    public Slider slider;
     public GameObject hudGameOver;
     private AudioController audioController;
     public int right;
@@ -14,6 +17,7 @@ public class GameController : MonoBehaviour
         audioController = FindObjectOfType(typeof(AudioController)) as AudioController;
         right = 0;
         error = 0;
+        hudGameOver.SetActive(false);
     }
 
     // Update is called once per frame
@@ -49,11 +53,16 @@ public class GameController : MonoBehaviour
     }
     public void Reentry()
     {
-       
+        this.
+        hudGameOver.SetActive(false);
+        Debug.Log(" Reentry "+ audioController.newScene);
+
+        audioController.changeMusic(audioController.musicFase1, audioController.newScene, true, slider);
+        SceneManager.LoadScene(audioController.newScene);
     }
     public void Menu()
     {
-
+        audioController.changeMusic(audioController.musicTitle, "Menu2", true, slider);
     }
     public void Next()
     {

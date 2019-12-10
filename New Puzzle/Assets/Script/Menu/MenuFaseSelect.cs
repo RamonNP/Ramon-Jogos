@@ -61,7 +61,7 @@ public class MenuFaseSelect : MonoBehaviour
     {
         if (fases.Contains(Scena))
         {
-            audioController.changeMusic(audioController.musicFase1, Scena, true);
+            audioController.changeMusic(audioController.musicFase1, Scena, true, slider);
             //StartCoroutine(LoadScreen(Scena));
         }
     }
@@ -144,11 +144,11 @@ public class MenuFaseSelect : MonoBehaviour
 
     public void selectScene()
     {
-        audioController.changeMusic(audioController.musicFase2, this.gameObject.name, true);
+        audioController.changeMusic(audioController.musicFase2, this.gameObject.name, true, slider);
     }
     public void selectMenu()
     {
-        audioController.changeMusic(audioController.musicFase2, "Menu", true);
+        audioController.changeMusic(audioController.musicFase2, "Menu", true, slider);
     }
     public void clickSom()
     {
