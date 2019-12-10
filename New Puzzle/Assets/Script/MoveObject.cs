@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MoveObject : MonoBehaviour
 {
+
     [SerializeField]
     private Transform place;
     private Vector2 initialPosition;
@@ -13,10 +14,27 @@ public class MoveObject : MonoBehaviour
 
     public bool locked;
 
+
+    //efeito quando arrasta pega aumenta.
+    float x;
+    float y;
+    float z;
+    float xN;
+    float yN;
+
+
     void Start()
     {
         gameController = FindObjectOfType(typeof(GameController)) as GameController;
         initialPosition = transform.position;
+        x = transform.localScale.x;
+        y = transform.localScale.y;
+        z = transform.localScale.z;
+
+        xN = x * 1.3f;
+        yN = y * 1.3f;
+
+
     }
 
 
@@ -25,12 +43,13 @@ public class MoveObject : MonoBehaviour
         //if (Input.touchCount > 0 && !locked) //SEM SIMULADOR
         if (!locked)
         {
-            if(transform.position.x != initialPosition.x && initialPosition.y != transform.position.y)
+            
+            if (transform.position.x != initialPosition.x && initialPosition.y != transform.position.y)
             {
-                transform.localScale = new Vector3(1, 1, 1);
+                transform.localScale = new Vector3(xN, yN, z);
             } else
             {
-                transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
+                transform.localScale = new Vector3(x, y, z);
             }
             Touch touch = simulatess();//Input.GetTouch(0); SEM SIMULADOR
 
@@ -59,7 +78,7 @@ public class MoveObject : MonoBehaviour
                     {
                         transform.position = new Vector2(place.position.x, place.position.y);
                         locked = true;
-                        transform.localScale = new Vector3(1f, 1f, 1f);
+                        transform.localScale = new Vector3(x, y, z);
                         gameController.addRight();
                     }
                     else
