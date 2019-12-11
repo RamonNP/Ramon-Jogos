@@ -20,6 +20,8 @@ public class AudioController : MonoBehaviour
     public AudioClip musicFase2;
 
     [Header("Sound")]
+
+    public AudioClip fxPalavra;
     public AudioClip fxClick;
     public AudioClip fxSuccess;
     public AudioClip fxError;
