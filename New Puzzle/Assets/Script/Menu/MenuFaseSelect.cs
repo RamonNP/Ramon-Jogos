@@ -61,6 +61,7 @@ public class MenuFaseSelect : MonoBehaviour
     {
         if (fases.Contains(Scena))
         {
+        Debug.Log(Scena);
             audioController.changeMusic(audioController.musicFase1, Scena, true, slider);
             //StartCoroutine(LoadScreen(Scena));
         }
