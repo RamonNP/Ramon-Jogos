@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    public int pontos;
     public Slider slider;
     public GameObject hudGameOver;
     private AudioController audioController;
@@ -25,11 +26,18 @@ public class GameController : MonoBehaviour
     {
        
     }
-
+    public void playFx(AudioClip fxAudio)
+    {
+        audioController.playFx(fxAudio, 1);
+    }
+    public void playPalavra()
+    {
+        audioController.playFx(audioController.fxPalavra, 1);
+    }
     public void addRight()
     {
         right++;
-        if (right >= 3)
+        if (right >= pontos)
         {
             victory();
             audioController.playFx(audioController.fxVictory, 1);
