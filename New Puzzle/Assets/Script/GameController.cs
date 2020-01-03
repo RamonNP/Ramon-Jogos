@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    public enum CATEGORIA { ESCREVER = 0, LER = 10, ENCAIXE = 20, OUTROS = 8 };
+
+    public CATEGORIA cat;
+    private int fases;
     public static Dictionary <int, float> itensPosition;
     public int lockKK;
     public int pontos;
@@ -22,6 +26,7 @@ public class GameController : MonoBehaviour
         right = 0;
         error = 0;
         hudGameOver.SetActive(false);
+        fases = 3;
     }
 
     // Update is called once per frame
@@ -65,10 +70,9 @@ public class GameController : MonoBehaviour
     {
         this.
         hudGameOver.SetActive(false);
-        Debug.Log(" Reentry "+ audioController.newScene);
 
-        audioController.changeMusic(audioController.musicFase1, audioController.newScene, true, slider);
-        SceneManager.LoadScene(audioController.newScene);
+        audioController.changeMusic(audioController.musicFase1, "Fase_" + audioController.faseAtual, true, slider);
+        SceneManager.LoadScene("Fase_"+audioController.faseAtual);
     }
     public void Menu()
     {
@@ -76,7 +80,10 @@ public class GameController : MonoBehaviour
     }
     public void Next()
     {
-
+        int proximaFase = ((audioController.faseAtual % fases)+1)+ (int) cat;
+        Debug.Log(proximaFase);
+        audioController.changeMusic(audioController.musicFase1, "Fase_" + proximaFase, true, slider);
+        SceneManager.LoadScene("Fase_"+ proximaFase);
     }
 
     public void resizeColiderMax(BoxCollider2D bc2d, SpriteRenderer spriteRenderer)

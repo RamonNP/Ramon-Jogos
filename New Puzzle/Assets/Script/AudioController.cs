@@ -46,7 +46,7 @@ public class AudioController : MonoBehaviour
     public float minVol;
 
     private AudioClip newMusic;
-    public string newScene;
+    public int faseAtual;
     private string tradeScene;
     private bool changeScene;
 
@@ -170,4 +170,7 @@ public class AudioController : MonoBehaviour
         yield return new WaitForSecondsRealtime(tempoInciarPalavra);
         playFx(fxFrase, 1);
     }
+
+
+    
 }
