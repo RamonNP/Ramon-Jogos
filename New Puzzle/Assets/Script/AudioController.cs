@@ -5,6 +5,20 @@ using UnityEngine.UI;
 
 public class AudioController : MonoBehaviour
 {
+
+    public AudioController instance;
+    public float tempoInciarPalavra;
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+            //DontDestroyOnLoad(gameObject);
+        } else if (instance != this)
+        {
+            //Destroy(gameObject);
+        }
+    }
     public Slider slider;
     private IEnumerator coroutine;
     public AudioSource sMusic;
@@ -21,9 +35,9 @@ public class AudioController : MonoBehaviour
 
     [Header("Sound")]
 
-    public AudioClip fxPalavra;
+    public AudioClip fxFrase;
     public AudioClip fxClick;
-    public AudioClip fxSuccess;
+    public AudioClip fxPalavra;
     public AudioClip fxError;
     public AudioClip fxVictory;
 
@@ -33,17 +47,20 @@ public class AudioController : MonoBehaviour
 
     private AudioClip newMusic;
     public string newScene;
+    private string tradeScene;
     private bool changeScene;
 
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
         maxVol = 1;
         minVol = 1;
         
 
         changeMusic(musicTitle, "Menu2", false, null);
+        coroutine = playAudioEnum();
+        StartCoroutine("playAudioEnum");
     }
 
     public void changeMusic(AudioClip clip, string newScene, bool changeScene, Slider slider2)
@@ -56,8 +73,7 @@ public class AudioController : MonoBehaviour
         {
             slider = (Slider) FindObjectOfType<Slider>();
         }
-        Debug.Log(slider);
-        this.newScene = newScene;
+        this.tradeScene = newScene;
         this.newMusic = clip;
         this.changeScene = changeScene;
         coroutine = changeMusicEnum();
@@ -90,8 +106,6 @@ public class AudioController : MonoBehaviour
 
     IEnumerator changeMusicEnum()
     {
-        Debug.Log(slider);
-        Debug.Log(changeScene);
         if (changeScene)
         {
 
@@ -99,7 +113,7 @@ public class AudioController : MonoBehaviour
             if (async == null && slider != null)
             {
                 slider.gameObject.SetActive(true);
-                async = SceneManager.LoadSceneAsync(newScene);
+                async = SceneManager.LoadSceneAsync(tradeScene);
                 async.allowSceneActivation = false;
                 while (async.isDone == false)
                 {
@@ -142,11 +156,18 @@ public class AudioController : MonoBehaviour
             tempVolume = maxVol;
         }
         sFX.volume = tempVolume;
-        sFX.PlayOneShot(fx);
+        if(fx != null)
+        {
+            sFX.PlayOneShot(fx);
+        }
     }
     public void pauseMusic()
     {
         sMusic.Pause();
     }
-
+    IEnumerator playAudioEnum()
+    {
+        yield return new WaitForSecondsRealtime(tempoInciarPalavra);
+        playFx(fxFrase, 1);
+    }
 }
