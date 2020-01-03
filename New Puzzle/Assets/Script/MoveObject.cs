@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveObject : MonoBehaviour
 {
-
+    public AudioClip fxLetra;
     [SerializeField]
     private Transform place;
     private Vector2 initialPosition;
@@ -13,6 +13,7 @@ public class MoveObject : MonoBehaviour
     private float deltaX, deltaY;
 
     public bool locked;
+    public bool move;
 
 
     //efeito quando arrasta pega aumenta.
@@ -60,6 +61,8 @@ public class MoveObject : MonoBehaviour
                     
                     if (GetComponent<Collider2D>() == Physics2D.OverlapPoint(touchPos))
                     {
+                        Debug.Log("BeganBeganBeganBegan");
+                        gameController.playFx(fxLetra);
                         deltaX = touchPos.x - transform.position.x;
                         deltaY = touchPos.y - transform.position.y;
                     }
@@ -68,8 +71,9 @@ public class MoveObject : MonoBehaviour
                 case TouchPhase.Moved:
                     if (GetComponent<Collider2D>() == Physics2D.OverlapPoint(touchPos))
                     {
+                        move = true;
                         transform.position = new Vector2(touchPos.x - deltaX, touchPos.y - deltaY);
-                    }
+                    } 
                     break;
 
                 case TouchPhase.Ended:
@@ -80,14 +84,16 @@ public class MoveObject : MonoBehaviour
                         locked = true;
                         transform.localScale = new Vector3(x, y, z);
                         gameController.addRight();
+                        gameController.playFx(fxLetra);
                     }
                     else
                     {
                         if(initialPosition.x != transform.position.x)
                         {
                         transform.position = new Vector2(initialPosition.x, initialPosition.y);
-                            Debug.Log("OPA");
+                            
                             gameController.addError();
+                            move = false;
                         }
                     }
                     break;
