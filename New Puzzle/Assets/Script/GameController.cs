@@ -6,12 +6,15 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    public static Dictionary <int, float> itensPosition;
+    public int lockKK;
     public int pontos;
     public Slider slider;
     public GameObject hudGameOver;
     private AudioController audioController;
     public int right;
     public int error;
+    private IEnumerator coroutine;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,20 +33,19 @@ public class GameController : MonoBehaviour
     {
         audioController.playFx(fxAudio, 1);
     }
-    public void playPalavra()
-    {
-        audioController.playFx(audioController.fxPalavra, 1);
-    }
+
     public void addRight()
     {
         right++;
         if (right >= pontos)
         {
             victory();
-            audioController.playFx(audioController.fxVictory, 1);
+
+            coroutine = playVictoryEnum();
+            StartCoroutine("playVictoryEnum");
         } else
         {
-            audioController.playFx(audioController.fxSuccess, 1);
+           // audioController.playFx(audioController.fx, 1);
         }
         Debug.Log(" right" + right);
     }
@@ -74,6 +76,50 @@ public class GameController : MonoBehaviour
     }
     public void Next()
     {
+
+    }
+
+    public void resizeColiderMax(BoxCollider2D bc2d, SpriteRenderer spriteRenderer)
+    {
+        bc2d.size = new Vector2(2f, 3f);
+        spriteRenderer.sortingOrder = 5;
+    }
+    public void resizeColiderMaxPalavra(BoxCollider2D bc2d, SpriteRenderer spriteRenderer, float x, float y)
+    {
+        bc2d.size = new Vector2(x, y);
+        spriteRenderer.sortingOrder = 5;
+    }
+    public void resizeColiderMin(BoxCollider2D bc2d)
+    {
+        bc2d.size = new Vector2(0.00001f, 0.00001f);
+    }
+
+    /*
+    public void initList()
+    {
+        itensPosition = new Dictionary<int, float>();
+        float position = 0f;
+        int i = 0;
+        //while (itensPosition.Count < 5 || i >100) retorna 
+
+        retornar lista de posiçoes
+        {
+            i++;
+            int number = Random.Range(0, 5);
+            if(!itensPosition.ContainsKey(number))
+            {
+                Debug.Log(number +" Poition "+ position);
+                position = position + 3.2f;
+                itensPosition[1] = position;
+            }
+        }
+    }*/
+    IEnumerator playVictoryEnum()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        audioController.playFx(audioController.fxPalavra, 1);
+        yield return new WaitForSecondsRealtime(0.5f);
+        audioController.playFx(audioController.fxVictory, 1);
 
     }
 }

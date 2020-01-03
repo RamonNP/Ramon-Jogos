@@ -40,31 +40,17 @@ public class MenuFaseSelect : MonoBehaviour
     void Start()
     {
         audioController = FindObjectOfType(typeof(AudioController)) as AudioController;
-        //audioController.sMusic.volume = 1;
-        //audioController.sMusic.clip = audioController.musicTitle;
-        //audioController.sMusic.Play();
-        //audioController.changeMusic(audioController.musicTitle, "", false, slider);
-        //LoadScreen("Fase_1");
-        fases.Add("Fase_1");
-        for (int i = 0; i < maxFase; i++)
-        {
-            string fase = "Fase_" + i;
-            //Debug.Log(fase);
-            if (PlayerPrefs.GetInt(fase) == 1)
-            {
-                //Debug.Log(fase+"Achou");
-                OpenLevel("Fase_" + i);
-            }
-        }
+        
     }
     public void GoToScene(string Scena)
     {
-        if (fases.Contains(Scena))
-        {
+        Debug.Log("GGGGGGGGGGGGGGGGGG");
+        //if (fases.Contains(Scena))
+        //{
         Debug.Log(Scena);
             audioController.changeMusic(audioController.musicFase1, Scena, true, slider);
             //StartCoroutine(LoadScreen(Scena));
-        }
+        //}
     }
     private void OpenLevel(string level)
     {
@@ -125,7 +111,8 @@ public class MenuFaseSelect : MonoBehaviour
 
     IEnumerator LoadScreen(string scena)
     {
-        if(async == null )
+        
+        if (async == null )
         {
             slider.gameObject.SetActive(true);
             async = SceneManager.LoadSceneAsync(scena);

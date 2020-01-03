@@ -7,19 +7,20 @@ public class MoveObject : MonoBehaviour
     public AudioClip fxLetra;
     [SerializeField]
     private Transform place;
+    [SerializeField]
+    private Transform place2;
     private Vector2 initialPosition;
 
     private GameController gameController;
     private float deltaX, deltaY;
 
     public bool locked;
-    public bool move;
 
 
     //efeito quando arrasta pega aumenta.
     float x;
     float y;
-    float z;
+    //float z;
     float xN;
     float yN;
 
@@ -30,7 +31,7 @@ public class MoveObject : MonoBehaviour
         initialPosition = transform.position;
         x = transform.localScale.x;
         y = transform.localScale.y;
-        z = transform.localScale.z;
+        //z = transform.localScale.z;
 
         xN = x * 1.3f;
         yN = y * 1.3f;
@@ -47,44 +48,53 @@ public class MoveObject : MonoBehaviour
             
             if (transform.position.x != initialPosition.x && initialPosition.y != transform.position.y)
             {
-                transform.localScale = new Vector3(xN, yN, z);
+                transform.localScale = new Vector3(xN, yN);
             } else
             {
-                transform.localScale = new Vector3(x, y, z);
+                transform.localScale = new Vector2(x, y);
             }
+            //Touch touch = Input.GetTouch(0);//simulatess();//Input.GetTouch(0); SEM SIMULADOR
             Touch touch = simulatess();//Input.GetTouch(0); SEM SIMULADOR
 
             Vector2 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
             switch (touch.phase)
             {
                 case TouchPhase.Began:
-                    
                     if (GetComponent<Collider2D>() == Physics2D.OverlapPoint(touchPos))
                     {
-                        Debug.Log("BeganBeganBeganBegan");
-                        gameController.playFx(fxLetra);
+                        //Debug.Log(slider);
                         deltaX = touchPos.x - transform.position.x;
                         deltaY = touchPos.y - transform.position.y;
                     }
                     break;
 
                 case TouchPhase.Moved:
+
                     if (GetComponent<Collider2D>() == Physics2D.OverlapPoint(touchPos))
                     {
-                        move = true;
                         transform.position = new Vector2(touchPos.x - deltaX, touchPos.y - deltaY);
                     } 
                     break;
 
                 case TouchPhase.Ended:
-                    if (Mathf.Abs(transform.position.x - place.position.x) <= 1.0f &&
-                       Mathf.Abs(transform.position.y - place.position.y) <= 1.0f)
+                    if (place!= null && (Mathf.Abs(transform.position.x - place.position.x) <= 1.0f &&
+                       Mathf.Abs(transform.position.y - place.position.y) <= 1.0f))
                     {
                         transform.position = new Vector2(place.position.x, place.position.y);
                         locked = true;
-                        transform.localScale = new Vector3(x, y, z);
+                        transform.localScale = new Vector2(x, y);
                         gameController.addRight();
                         gameController.playFx(fxLetra);
+                        place = null;
+                    } else if (place2 != null && (Mathf.Abs(transform.position.x - place2.position.x) <= 1.0f &&
+                       Mathf.Abs(transform.position.y - place2.position.y) <= 1.0f))
+                    {
+                        transform.position = new Vector2(place2.position.x, place2.position.y);
+                        locked = true;
+                        transform.localScale = new Vector2(x, y);
+                        gameController.addRight();
+                        gameController.playFx(fxLetra);
+                        place2 = null;
                     }
                     else
                     {
@@ -93,7 +103,6 @@ public class MoveObject : MonoBehaviour
                         transform.position = new Vector2(initialPosition.x, initialPosition.y);
                             
                             gameController.addError();
-                            move = false;
                         }
                     }
                     break;
