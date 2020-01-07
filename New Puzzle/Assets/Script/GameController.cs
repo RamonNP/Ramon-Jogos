@@ -6,9 +6,13 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    public enum CATEGORIA { ESCREVER = 0, LER = 10, ENCAIXE = 20, OUTROS = 8 };
+    public enum CATEGORIA { ESCREVER = 0, LER = 1000, ENCAIXE = 20, OUTROS = 8 };
+    public enum TIPO { ANIMAIS = 0, OBJETOS = 100, FRUTAS = 200, OUTROS = 8 };
+
+
 
     public CATEGORIA cat;
+    public TIPO tipo;
     private int fases;
     public static Dictionary <int, float> itensPosition;
     public int lockKK;
@@ -26,7 +30,7 @@ public class GameController : MonoBehaviour
         right = 0;
         error = 0;
         hudGameOver.SetActive(false);
-        fases = 3;
+        fases = 4;
     }
 
     // Update is called once per frame
@@ -71,16 +75,18 @@ public class GameController : MonoBehaviour
         this.
         hudGameOver.SetActive(false);
 
-        audioController.changeMusic(audioController.musicFase1, "Fase_" + audioController.faseAtual, true, slider);
-        SceneManager.LoadScene("Fase_"+audioController.faseAtual);
+        //audioController.changeMusic(audioController.musicFase1, "Fase_" + audioController.faseAtual, true, slider);
+        SceneManager.LoadScene("Fase_"+ (cat + (int) tipo + audioController.faseAtual));
     }
     public void Menu()
     {
+        
         audioController.changeMusic(audioController.musicTitle, "Menu2", true, slider);
+        SceneManager.LoadScene("Menu2");
     }
     public void Next()
     {
-        int proximaFase = ((audioController.faseAtual % fases)+1)+ (int) cat;
+        int proximaFase = ((audioController.faseAtual % fases)+1)+ (int) cat + (int )tipo;
         Debug.Log(proximaFase);
         audioController.changeMusic(audioController.musicFase1, "Fase_" + proximaFase, true, slider);
         SceneManager.LoadScene("Fase_"+ proximaFase);

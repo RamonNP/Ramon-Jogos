@@ -15,7 +15,7 @@ public class MoveObject6 : MonoBehaviour
     private float deltaX, deltaY;
 
     public bool locked;
-
+    private IEnumerator coroutine;
 
     //efeito quando arrasta pega aumenta.
     float x;
@@ -29,13 +29,10 @@ public class MoveObject6 : MonoBehaviour
     {
         gameController = FindObjectOfType(typeof(GameController)) as GameController;
         initialPosition = transform.position;
-        x = transform.localScale.x;
-        y = transform.localScale.y;
-        z = transform.localScale.z;
-
-        xN = x * 1.3f;
-        yN = y * 1.3f;
-
+        z = 1;
+        locked = true;
+        moveInitial();
+        //moveInitial(Transform transform, float xDest, float yDest)
 
     }
 
@@ -53,7 +50,8 @@ public class MoveObject6 : MonoBehaviour
             {
                 transform.localScale = new Vector3(x, y, z);
             }
-            Touch touch = Input.GetTouch(0);//simulatess();//Input.GetTouch(0); SEM SIMULADOR
+            //Touch touch = Input.GetTouch(0);//simulatess();//Input.GetTouch(0); SEM SIMULADOR
+            Touch touch = simulatess();//Input.GetTouch(0); SEM SIMULADOR
 
             Vector2 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
             switch (touch.phase)
@@ -71,39 +69,53 @@ public class MoveObject6 : MonoBehaviour
 
                     if (GetComponent<Collider2D>() == Physics2D.OverlapPoint(touchPos))
                     {
-                        transform.position = new Vector3(touchPos.x - deltaX, touchPos.y - deltaY, 15);
-                    } 
+                        if (gameController.lockKK == 0)
+                        {
+                            gameController.lockKK = 1;
+                        } else if (gameController.lockKK == 1)
+                        {
+                            transform.position = new Vector3(touchPos.x - deltaX, touchPos.y - deltaY, z);
+                            this.GetComponent<SpriteRenderer>().sortingOrder = 7;
+                        } else
+                        {
+                            gameController.resizeColiderMin(this.GetComponent<BoxCollider2D>());
+                        }
+                    }
                     break;
 
                 case TouchPhase.Ended:
-                    if (place!= null && (Mathf.Abs(transform.position.x - place.position.x) <= 1.0f &&
+                    if (place!= null && place.tag != "ok" && (Mathf.Abs(transform.position.x - place.position.x) <= 1.0f &&
                        Mathf.Abs(transform.position.y - place.position.y) <= 1.0f))
                     {
-                        transform.position = new Vector3(place.position.x, place.position.y, 1);
+                        transform.position = new Vector3(place.position.x, place.position.y, z);
                         locked = true;
                         transform.localScale = new Vector3(x, y, z);
                         gameController.addRight();
                         gameController.playFx(fxLetra);
+                        place.tag = "ok";
                         place = null;
-                    } else if (place2 != null && (Mathf.Abs(transform.position.x - place2.position.x) <= 1.0f &&
+                    } else if (place2 != null && place2.tag != "ok" && (Mathf.Abs(transform.position.x - place2.position.x) <= 1.0f &&
                        Mathf.Abs(transform.position.y - place2.position.y) <= 1.0f))
                     {
-                        transform.position = new Vector3(place2.position.x, place2.position.y, 1);
+                        transform.position = new Vector3(place2.position.x, place2.position.y, z);
                         locked = true;
                         transform.localScale = new Vector3(x, y, z);
                         gameController.addRight();
                         gameController.playFx(fxLetra);
+                        place2.tag = "ok";
                         place2 = null;
                     }
                     else
                     {
                         if(initialPosition.x != transform.position.x)
                         {
-                        transform.position = new Vector2(initialPosition.x, initialPosition.y);
+                        transform.position = new Vector3(initialPosition.x, initialPosition.y, z);
                             
                             gameController.addError();
                         }
                     }
+                    gameController.lockKK = 0;
+                    gameController.resizeColiderMax(this.GetComponent<BoxCollider2D>(), this.GetComponent<SpriteRenderer>());
                     break;
 
             }
@@ -132,6 +144,7 @@ public class MoveObject6 : MonoBehaviour
         }
         return touch;
     }
+
     //MOVIMENTO INICIAL EMBARALHAR
     public float xDest;
     private float yDest;
@@ -140,7 +153,7 @@ public class MoveObject6 : MonoBehaviour
 
         //xDest = -2.5f;
         yDest = -2f;
-
+        
         coroutine = waithMoveEnum();
         StartCoroutine("waithMoveEnum");
     }
@@ -152,27 +165,27 @@ public class MoveObject6 : MonoBehaviour
         float yInit = transform.position.y;
         float xcurrent = transform.position.x;
         float ycurrent = transform.position.y;
-
+        
 
         yield return new WaitForSecondsRealtime(1.5f);
         if (ycurrent > yDest)
         {
-
+           
             while (ycurrent >= yDest)
             {
                 ycurrent = ycurrent - 0.1f;
                 yield return new WaitForSecondsRealtime(0.01f);
-                transform.position = new Vector2(xcurrent, ycurrent);
+                transform.position = new Vector3(xcurrent, ycurrent, z);
             }
         }
         else if (ycurrent < yDest)
         {
-
+           
             while (ycurrent <= yDest)
             {
                 ycurrent = ycurrent + 0.1f;
                 yield return new WaitForSecondsRealtime(0.01f);
-                transform.position = new Vector2(xcurrent, ycurrent);
+                transform.position = new Vector3(xcurrent, ycurrent, z);
             }
         }
         yield return new WaitForSecondsRealtime(1f);
@@ -183,7 +196,7 @@ public class MoveObject6 : MonoBehaviour
             {
                 xcurrent = xcurrent - 0.1f;
                 yield return new WaitForSecondsRealtime(0.01f);
-                transform.position = new Vector2(xcurrent, ycurrent);
+                transform.position = new Vector3(xcurrent, ycurrent, z);
             }
 
         }
@@ -193,7 +206,7 @@ public class MoveObject6 : MonoBehaviour
             {
                 xcurrent = xcurrent + 0.1f;
                 yield return new WaitForSecondsRealtime(0.01f);
-                transform.position = new Vector2(xcurrent, ycurrent);
+                transform.position = new Vector3(xcurrent, ycurrent, z);
             }
 
         }
@@ -202,7 +215,7 @@ public class MoveObject6 : MonoBehaviour
         initialPosition = transform.position;
         x = transform.localScale.x;
         y = transform.localScale.y;
-        z = transform.localScale.z;
+        //z = 0;
 
         xN = x * 1.3f;
         yN = y * 1.3f;

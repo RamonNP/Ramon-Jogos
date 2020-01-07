@@ -20,7 +20,7 @@ public class MoveObject6 : MonoBehaviour
     //efeito quando arrasta pega aumenta.
     float x;
     float y;
-    float z;
+    public float z;
     float xN;
     float yN;
 
@@ -200,7 +200,7 @@ public class MoveObject6 : MonoBehaviour
             }
 
         }
-        else if (xcurrent < xDest)
+        else if (xcurrent <= xDest)
         {
             while (xcurrent <= xDest)
             {
