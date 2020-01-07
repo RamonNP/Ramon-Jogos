@@ -14,7 +14,7 @@ public class MoveObject : MonoBehaviour
     private GameController gameController;
     private float deltaX, deltaY;
 
-    public bool locked;
+    public static bool locked;
 
 
     //efeito quando arrasta pega aumenta.
@@ -36,7 +36,7 @@ public class MoveObject : MonoBehaviour
         xN = x * 1.3f;
         yN = y * 1.3f;
 
-
+        locked = false;
     }
 
 

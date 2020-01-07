@@ -142,4 +142,11 @@ public class MenuFaseSelect : MonoBehaviour
     {
         audioController.playFx(audioController.fxClick, 1);
     }
+    public void Reentry()
+    {
+
+        audioController.changeMusic(audioController.musicFase1, "Menu2", true, slider);
+        SceneManager.LoadScene("Menu2");
+    }
+
 }
