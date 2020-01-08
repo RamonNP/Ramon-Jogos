@@ -44,4 +44,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ler/Fase_1101.unity
     guid: e5eea4d0b3d68aa4599219f445fe298e
+  - enabled: 1
+    path: Assets/Scenes/Escrever/Fase_101.unity
+    guid: e6953dd15a9baf24b99212ee07ec1916
+  - enabled: 1
+    path: Assets/Scenes/Escrever/Fase_102.unity
+    guid: 246f97112e07dfc46a4e482c24e24c40
+  - enabled: 1
+    path: Assets/Scenes/Escrever/Fase_104.unity
+    guid: c27e7f0fd7e3233478b8c73da1ffb2d1
+  - enabled: 1
+    path: Assets/Scenes/Escrever/Fase_103.unity
+    guid: bf04654d468c3704794a24b22a71e2b3
   m_configObjects: {}
