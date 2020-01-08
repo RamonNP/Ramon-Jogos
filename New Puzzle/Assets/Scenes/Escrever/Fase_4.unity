@@ -1074,6 +1074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cat: 0
+  tipo: 0
   lockKK: 0
   pontos: 6
   slider: {fileID: 306639109}
