@@ -82,7 +82,7 @@ public class GameController : MonoBehaviour
     {
         
         audioController.changeMusic(audioController.musicTitle, "Menu2", true, slider);
-        SceneManager.LoadScene("Menu2");
+        SceneManager.LoadScene("MenuPrincipal");
     }
     public void Next()
     {

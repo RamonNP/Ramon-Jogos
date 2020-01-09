@@ -4,8 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static GameController;
+
 public class MenuFaseSelect : MonoBehaviour
 {
+    public static CATEGORIA cat;
+    public TIPO TIPO;
+    
     public Slider slider;
     private AudioController audioController;
     AsyncOperation async;
@@ -39,18 +44,13 @@ public class MenuFaseSelect : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(cat);
         audioController = FindObjectOfType(typeof(AudioController)) as AudioController;
         
     }
     public void GoToScene(string Scena)
     {
-        Debug.Log("GGGGGGGGGGGGGGGGGG");
-        //if (fases.Contains(Scena))
-        //{
-        Debug.Log(Scena);
-            audioController.changeMusic(audioController.musicFase1, Scena, true, slider);
-            //StartCoroutine(LoadScreen(Scena));
-        //}
+      audioController.changeMusic(audioController.musicFase1, Scena, true, slider);
     }
     private void OpenLevel(string level)
     {
@@ -145,8 +145,46 @@ public class MenuFaseSelect : MonoBehaviour
     public void Reentry()
     {
 
-        audioController.changeMusic(audioController.musicFase1, "Menu2", true, slider);
-        SceneManager.LoadScene("Menu2");
+        audioController.changeMusic(audioController.musicFase1, "MenuPrincipal", true, slider);
+        SceneManager.LoadScene("MenuPrincipal");
     }
+    public void setCategoria(String categoria)
+    {
+        if(categoria.Equals("LER"))
+        {
+            cat = CATEGORIA.LER;
+        } else if(categoria.Equals("ESCREVER"))
+        {
+            cat = CATEGORIA.ESCREVER;
+        } else if(categoria.Equals("CONTAR"))
+        {
+            cat = CATEGORIA.CONTAR;
+        } else if(categoria.Equals("OUTROS"))
+        {
+            cat = CATEGORIA.OUTROS;
+        }
+        audioController.changeMusic(audioController.musicFase1, "Menu2", true, slider);
+    }
+    public void setTipo(String tipo)
+    {
+        //TIPO { ANIMAIS = 0, OBJETOS = 100, FRUTAS = 200, OUTROS = 8 };
+        if (tipo.Equals("ANIMAIS"))
+        {
+            TIPO = TIPO.ANIMAIS;
+        } else if(tipo.Equals("OBJETOS"))
+        {
+            TIPO = TIPO.OBJETOS;
+        } else if(tipo.Equals("FRUTAS"))
+        {
+            TIPO = TIPO.FRUTAS;
+        } else if(tipo.Equals("OUTROS"))
+        {
+            TIPO = TIPO.OUTROS;
+        }
+        int fase = (int)cat + (int)TIPO + 1;
+        Debug.Log(fase);
+        audioController.changeMusic(audioController.musicFase1, "Fase_"+ fase, true, slider);
+    }
+    
 
 }
