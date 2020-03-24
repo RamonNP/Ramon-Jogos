@@ -11,7 +11,7 @@ public class MoveObject : MonoBehaviour
     private Transform place2;
     private Vector2 initialPosition;
 
-    private GameController gameController;
+    public GameControllerDinamicoObjetos gameController;
     private float deltaX, deltaY;
 
     public static bool locked;
@@ -27,7 +27,7 @@ public class MoveObject : MonoBehaviour
 
     void Start()
     {
-        gameController = FindObjectOfType(typeof(GameController)) as GameController;
+        gameController = FindObjectOfType(typeof(GameControllerDinamicoObjetos)) as GameControllerDinamicoObjetos;
         initialPosition = transform.position;
         x = transform.localScale.x;
         y = transform.localScale.y;

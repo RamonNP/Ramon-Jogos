@@ -86,8 +86,8 @@ public class GameController : MonoBehaviour
     }
     public void Next()
     {
+        //Debug.Log(proximaFase);
         int proximaFase = ((audioController.faseAtual % fases)+1)+ (int) cat + (int )tipo;
-        Debug.Log(proximaFase);
         audioController.changeMusic(audioController.musicFase1, "Fase_" + proximaFase, true, slider);
         SceneManager.LoadScene("Fase_"+ proximaFase);
     }

@@ -146,7 +146,12 @@ public class AudioController : MonoBehaviour
         sMusic.volume = maxVol;
         async = null;
     }
-
+    public void playPalavra()
+    {
+        sFX.Stop();
+        coroutine = playAudioEnum();
+        StartCoroutine("playAudioEnum");
+    }
 
     public void playFx(AudioClip fx, float volume)
     {
@@ -165,7 +170,7 @@ public class AudioController : MonoBehaviour
     {
         sMusic.Pause();
     }
-    IEnumerator playAudioEnum()
+    public IEnumerator playAudioEnum()
     {
         yield return new WaitForSecondsRealtime(tempoInciarPalavra);
         playFx(fxFrase, 1);

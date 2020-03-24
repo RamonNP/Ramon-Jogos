@@ -6,6 +6,7 @@ public class TouchPlay : MonoBehaviour
 {
     private AudioController audioController;
     private GameController gameController;
+    public bool playinicial;
     public float xSize;
     public float ySize;
     public float tempoInciarPalavra;
@@ -16,8 +17,13 @@ public class TouchPlay : MonoBehaviour
     {
         audioController = FindObjectOfType(typeof(AudioController)) as AudioController;
         gameController = FindObjectOfType(typeof(GameController)) as GameController;
-        //coroutine = playAudioEnum();
-        //StartCoroutine("playAudioEnum");
+
+        if (playinicial)
+        {
+            //coroutine = playAudioEnumSon();
+            //StartCoroutine("playAudioEnumSon");
+        }
+
     }
 
     // Update is called once per frame
@@ -47,17 +53,21 @@ public class TouchPlay : MonoBehaviour
             case TouchPhase.Moved:
                 if (GetComponent<Collider2D>() == Physics2D.OverlapPoint(touchPos))
                 {
-                    if (gameController.lockKK == 0)
+                    if (gameController != null)
                     {
-                        gameController.lockKK = 11;
-                    }
-                    else if (gameController.lockKK == 11)
-                    {
-                        this.GetComponent<SpriteRenderer>().sortingOrder = 7;
-                    }
-                    else
-                    {
-                        gameController.resizeColiderMin(this.GetComponent<BoxCollider2D>());
+
+                        if (gameController.lockKK == 0)
+                        {
+                            gameController.lockKK = 11;
+                        }
+                        else if (gameController.lockKK == 11)
+                        {
+                            this.GetComponent<SpriteRenderer>().sortingOrder = 7;
+                        }
+                        else
+                        {
+                            gameController.resizeColiderMin(this.GetComponent<BoxCollider2D>());
+                        }
                     }
                 }
                 break;
@@ -65,12 +75,15 @@ public class TouchPlay : MonoBehaviour
             case TouchPhase.Ended:
                 if (GetComponent<Collider2D>() == Physics2D.OverlapPoint(touchPos))
                 {
-                    Debug.Log("TOCO NO PORCO");
+
                     audioController.playFx(fxPalavra, 1);
 
                 }
-                gameController.lockKK = 0;
-                gameController.resizeColiderMaxPalavra(this.GetComponent<BoxCollider2D>(), this.GetComponent<SpriteRenderer>(), xSize, ySize);
+                if (gameController != null)
+                {
+                    gameController.lockKK = 0;
+                    gameController.resizeColiderMaxPalavra(this.GetComponent<BoxCollider2D>(), this.GetComponent<SpriteRenderer>(), xSize, ySize);
+                }
                 break;
 
         }
@@ -104,5 +117,10 @@ public class TouchPlay : MonoBehaviour
         yield return new WaitForSecondsRealtime(tempoInciarPalavra);
         audioController.playFx(audioController.fxFrase, 1);
     }
-    
+    IEnumerator playAudioEnumSon()
+    {
+        yield return new WaitForSecondsRealtime(tempoInciarPalavra);
+        audioController.playFx(fxPalavra, 1);
+    }
+
 }
