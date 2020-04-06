@@ -150,7 +150,7 @@ RectTransform:
   m_Children:
   - {fileID: 1900526026}
   m_Father: {fileID: 794184441}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 10766413}
   - component: {fileID: 10766414}
   m_Layer: 5
-  m_Name: OtrosEscrever
+  m_Name: OutrosEscrever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -235,7 +235,7 @@ RectTransform:
   m_Children:
   - {fileID: 427234760}
   m_Father: {fileID: 794184441}
-  m_RootOrder: 8
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -380,7 +380,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Fase_1001
+          m_StringArgument: Fase_Sons
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -490,7 +490,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: b8c1227cb789d33489e01e44725ea78f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fb8630121f36c4d43b004e66084c94ed, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -535,12 +535,12 @@ MonoBehaviour:
   slider: {fileID: 498944536}
   maxFase: 15
   fase: 1
-  fase_1: {fileID: 0}
-  lock_1: {fileID: 0}
-  fase_2: {fileID: 0}
-  lock_2: {fileID: 0}
-  fase_3: {fileID: 0}
-  lock_3: {fileID: 0}
+  animalEscrever: {fileID: 946613647}
+  abjetosEscrever: {fileID: 9264264}
+  outrosEscrever: {fileID: 10766412}
+  sonsAnimaisDinamico: {fileID: 1722719563}
+  coresDinamico: {fileID: 629837689}
+  outrosDinamico: {fileID: 950253941}
   fase_4: {fileID: 0}
   lock_4: {fileID: 0}
   fase_5: {fileID: 0}
@@ -800,7 +800,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 0e434fd8bd24fd049b8986bce26b1e91, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a28e435530aa6c049a567b2c56b67d49, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1365,7 +1365,7 @@ GameObject:
   - component: {fileID: 629837690}
   - component: {fileID: 629837691}
   m_Layer: 5
-  m_Name: ObjetosLer
+  m_Name: CoresDinamico
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1384,11 +1384,11 @@ RectTransform:
   m_Children:
   - {fileID: 1451812159}
   m_Father: {fileID: 794184441}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 22.6, y: -46}
+  m_AnchoredPosition: {x: 22.6, y: 4}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &629837691
@@ -1428,15 +1428,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fb8630121f36c4d43b004e66084c94ed, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &794184440
@@ -1470,11 +1470,11 @@ RectTransform:
   - {fileID: 2106661768}
   - {fileID: 1514233710}
   - {fileID: 946613648}
+  - {fileID: 9264265}
+  - {fileID: 10766413}
   - {fileID: 1722719564}
   - {fileID: 629837690}
-  - {fileID: 9264265}
   - {fileID: 950253942}
-  - {fileID: 10766413}
   - {fileID: 1172906500}
   m_Father: {fileID: 1560525562}
   m_RootOrder: 0
@@ -1732,7 +1732,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &946613648
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1812,7 +1812,7 @@ GameObject:
   - component: {fileID: 950253942}
   - component: {fileID: 950253943}
   m_Layer: 5
-  m_Name: OutrosLer
+  m_Name: OutrosDinamico
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1831,11 +1831,11 @@ RectTransform:
   m_Children:
   - {fileID: 1582517818}
   m_Father: {fileID: 794184441}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 57.6, y: -46}
+  m_AnchoredPosition: {x: 57.6, y: 4}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &950253943
@@ -2582,7 +2582,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Fase_1101
+          m_StringArgument: cores_dinamico
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -3142,12 +3142,12 @@ GameObject:
   - component: {fileID: 1722719564}
   - component: {fileID: 1722719565}
   m_Layer: 5
-  m_Name: AnimaisLer
+  m_Name: SonsAnimaisDinamico
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1722719564
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3161,11 +3161,11 @@ RectTransform:
   m_Children:
   - {fileID: 99822355}
   m_Father: {fileID: 794184441}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12.400001, y: -46}
+  m_AnchoredPosition: {x: -12.400001, y: 4}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &1722719565

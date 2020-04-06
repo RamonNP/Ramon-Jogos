@@ -19,12 +19,12 @@ public class MenuFaseSelect : MonoBehaviour
     public int fase;
 
     //Fases
-    public GameObject fase_1;
-    public GameObject lock_1;
-    public GameObject fase_2;
-    public GameObject lock_2;
-    public GameObject fase_3;
-    public GameObject lock_3;
+    public GameObject animalEscrever;
+    public GameObject abjetosEscrever;
+    public GameObject outrosEscrever;
+    public GameObject sonsAnimaisDinamico;
+    public GameObject coresDinamico;
+    public GameObject outrosDinamico;
     public GameObject fase_4;
     public GameObject lock_4;
     public GameObject fase_5;
@@ -46,6 +46,17 @@ public class MenuFaseSelect : MonoBehaviour
     {
         Debug.Log(cat);
         audioController = FindObjectOfType(typeof(AudioController)) as AudioController;
+        if (cat.Equals(CATEGORIA.DINAMICO))
+        {
+            animalEscrever.SetActive(!cat.Equals(CATEGORIA.DINAMICO));
+            abjetosEscrever.SetActive(!cat.Equals(CATEGORIA.DINAMICO));
+            outrosEscrever.SetActive(!cat.Equals(CATEGORIA.DINAMICO));
+
+            sonsAnimaisDinamico.SetActive(cat.Equals(CATEGORIA.DINAMICO));
+            coresDinamico.SetActive(cat.Equals(CATEGORIA.DINAMICO));
+            outrosDinamico.SetActive(cat.Equals(CATEGORIA.DINAMICO));
+
+        } 
         
     }
     public void GoToScene(string Scena)
@@ -59,17 +70,17 @@ public class MenuFaseSelect : MonoBehaviour
         switch (level)
         {
             case "Fase_1":
-                fase_1.SetActive(true);
-                lock_1.SetActive(false);
+                animalEscrever.SetActive(true);
+                abjetosEscrever.SetActive(false);
                 break;
            
             case "Fase_2":
-                fase_2.SetActive(true);
-                lock_2.SetActive(false);
+                outrosEscrever.SetActive(true);
+                sonsAnimaisDinamico.SetActive(false);
                 break;
             case "Fase_3":
-                fase_3.SetActive(true);
-                lock_3.SetActive(false);
+                coresDinamico.SetActive(true);
+                outrosDinamico.SetActive(false);
                 break;
             case "Fase_4":
                 fase_4.SetActive(true);
@@ -159,9 +170,9 @@ public class MenuFaseSelect : MonoBehaviour
         } else if(categoria.Equals("CONTAR"))
         {
             cat = CATEGORIA.CONTAR;
-        } else if(categoria.Equals("OUTROS"))
+        } else if(categoria.Equals("DINAMICO"))
         {
-            cat = CATEGORIA.OUTROS;
+            cat = CATEGORIA.DINAMICO;
         }
         audioController.changeMusic(audioController.musicFase1, "Menu2", true, slider);
     }
@@ -177,9 +188,9 @@ public class MenuFaseSelect : MonoBehaviour
         } else if(tipo.Equals("FRUTAS"))
         {
             TIPO = TIPO.FRUTAS;
-        } else if(tipo.Equals("OUTROS"))
+        } else if(tipo.Equals("DINAMICO"))
         {
-            TIPO = TIPO.OUTROS;
+            TIPO = TIPO.SONS;
         }
         int fase = (int)cat + (int)TIPO + 1;
         Debug.Log(fase);

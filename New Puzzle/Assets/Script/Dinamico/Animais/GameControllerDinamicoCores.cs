@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = System.Random;
 
-public class GameControllerDinamicoCores : MonoBehaviour
+public class GameControllerDinamicoCores : GameControllerBase
 {
     private float x1;
     private float x2;
@@ -19,10 +19,10 @@ public class GameControllerDinamicoCores : MonoBehaviour
     public AudioClip audioFase5;
 
     public AudioClip audioSelecionado;
-    public AudioClip audioCachorro;
-    public AudioClip audioGirafa;
-    public AudioClip audioGato;
-    public AudioClip audioGalo;
+    public AudioClip audioBranco;
+    public AudioClip audioAmarelo;
+    public AudioClip audioAzul;
+    public AudioClip audioVerde;
     public AudioClip audioCavalo;
     public AudioClip audioCoruja;
     public AudioClip audioCobra;
@@ -53,10 +53,10 @@ public class GameControllerDinamicoCores : MonoBehaviour
    
 
     //public Sprite letraA;
-    public Sprite cachorro;
-    public Sprite girafa;
-    public Sprite gato;
-    public Sprite galo;
+    public Sprite branco;
+    public Sprite azul;
+    public Sprite amarelo;
+    public Sprite verde;
     public Sprite cavalo;
     public Sprite coruja;
     public Sprite cobra;
@@ -134,26 +134,25 @@ public class GameControllerDinamicoCores : MonoBehaviour
     public Sprite PopularSprite()
     {
         Sprite s1 ;
-        //Debug.Log(faseAtual);
-        int animalSprite = new Random().Next(0, 19);
-        while(animalSprite == animalSpriteAnt || animalSprite == (faseAtual))
+        int animalSprite = new Random().Next(0, palavras.Length);
+        while(animalSprite == animalSpriteAnt || animalSprite == (faseAtual) || animalSpriteAnt == animalSprite)
         {
-            animalSprite = new Random().Next(0, 19);
+            animalSprite = new Random().Next(0, palavras.Length);
         }
-
+        //Debug.Log(" animalSpriteAnt " + animalSpriteAnt + " faseAtual " + faseAtual + " animalSprite " + animalSprite);
         switch (animalSprite)
         {
             case 0:
-                s1 = cachorro;
+                s1 = branco;
                 break;
             case 1:
-                s1 = galo;
+                s1 = amarelo;
                 break;
             case 2:
-                s1 = girafa;
+                s1 = azul;
                 break;
             case 3:
-                s1 = gato;
+                s1 = verde;
                 break;
             case 4:
                 s1 = cavalo;
@@ -287,7 +286,7 @@ public class GameControllerDinamicoCores : MonoBehaviour
         fundo3.SetActive(true);
 
     }
-    public void playFx(AudioClip fxAudio)
+    public override void playFx(AudioClip fxAudio)
     {
         audioController.playFx(fxAudio, 1);
     }
@@ -322,33 +321,33 @@ public class GameControllerDinamicoCores : MonoBehaviour
         //Debug.Log(palavra);
         switch (palavra)
         {
-            case "Cachorro":
-                ok3.GetComponent<SpriteRenderer>().sprite = cachorro;
+            case "Branco":
+                ok3.GetComponent<SpriteRenderer>().sprite = branco;
                 //popularSprite(galo, girafa, gato);
                 ok2.GetComponent<SpriteRenderer>().sprite = PopularSprite();
                 ok1.GetComponent<SpriteRenderer>().sprite = PopularSprite();
                 //ok2.GetComponent<SpriteRenderer>().sprite = cavalo;
                 //ok1.GetComponent<SpriteRenderer>().sprite = cavalo;
 
-                audioSelecionado = audioCachorro;
+                audioSelecionado = audioBranco;
                 break;
-            case "Galo":
-                ok3.GetComponent<SpriteRenderer>().sprite = galo;
+            case "Verde":
+                ok3.GetComponent<SpriteRenderer>().sprite = verde;
                 ok2.GetComponent<SpriteRenderer>().sprite = PopularSprite();
                 ok1.GetComponent<SpriteRenderer>().sprite = PopularSprite();
-                audioSelecionado = audioGalo;
+                audioSelecionado = audioVerde;
                 break;
-            case "Girafa":
-                ok3.GetComponent<SpriteRenderer>().sprite = girafa;
+            case "Amarelo":
+                ok3.GetComponent<SpriteRenderer>().sprite = amarelo;
                 ok2.GetComponent<SpriteRenderer>().sprite = PopularSprite();
                 ok1.GetComponent<SpriteRenderer>().sprite = PopularSprite();
-                audioSelecionado = audioGirafa;
+                audioSelecionado = audioAmarelo;
                 break;
-            case "Gato":
-                ok3.GetComponent<SpriteRenderer>().sprite = gato;
+            case "Azul":
+                ok3.GetComponent<SpriteRenderer>().sprite = azul;
                 ok2.GetComponent<SpriteRenderer>().sprite = PopularSprite();
                 ok1.GetComponent<SpriteRenderer>().sprite = PopularSprite();
-                audioSelecionado = audioGato;
+                audioSelecionado = audioAzul;
                 break;
             case "Cavalo":
                 ok3.GetComponent<SpriteRenderer>().sprite = cavalo;
@@ -451,7 +450,7 @@ public class GameControllerDinamicoCores : MonoBehaviour
                 break;
         }
     }
-    public void addRight()
+    public override void addRight()
     {
         right++;
         if (right >= pontos)
@@ -467,7 +466,7 @@ public class GameControllerDinamicoCores : MonoBehaviour
         }
         //Debug.Log(" right" + right);
     }
-    public void addError()
+    public override void addError()
     {
         error++;
         audioController.playFx(audioController.fxError, 1);
@@ -486,5 +485,9 @@ public class GameControllerDinamicoCores : MonoBehaviour
         hudGameOver.SetActive(true);
         //Debug.Log(" victory ");
         audioController.pauseMusic();
+    }
+    public override AudioClip GetAudioSelecionado()
+    {
+        return audioSelecionado;
     }
 }

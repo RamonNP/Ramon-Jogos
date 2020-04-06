@@ -1084,6 +1084,7 @@ MonoBehaviour:
   place2: {fileID: 0}
   initialPosition: {x: 0, y: 0}
   gameController: {fileID: 0}
+  tipoDinamico: Sons
 --- !u!61 &1021956892
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1434,6 +1435,7 @@ MonoBehaviour:
   place2: {fileID: 0}
   initialPosition: {x: 0, y: 0}
   gameController: {fileID: 0}
+  tipoDinamico: Sons
 --- !u!1 &1201013190
 GameObject:
   m_ObjectHideFlags: 0
@@ -1746,6 +1748,7 @@ MonoBehaviour:
   place2: {fileID: 0}
   initialPosition: {x: 0, y: 0}
   gameController: {fileID: 0}
+  tipoDinamico: Sons
 --- !u!61 &1450586976
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2716,6 +2719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a527f1d1c1a6b4d438bdf98ce9952b21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tipoDinamico: Sons
   playinicial: 0
   xSize: 5
   ySize: 5
