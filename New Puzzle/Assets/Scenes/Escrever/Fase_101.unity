@@ -1479,6 +1479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfcc7434c7244e947bdd7b5f90eb4efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playinicial: 0
   xSize: 5
   ySize: 5
   tempoInciarPalavra: 1
@@ -2288,7 +2289,7 @@ MonoBehaviour:
   musicTitle: {fileID: 0}
   musicFase1: {fileID: 0}
   musicFase2: {fileID: 0}
-  fxFrase: {fileID: 8300000, guid: 0e234e7f1533b8c41917719e58b91077, type: 3}
+  fxFrase: {fileID: 8300000, guid: 65a7fa3b0d464864a8be21ad5df974bf, type: 3}
   fxClick: {fileID: 8300000, guid: 6c7cf34fba55573438cc06b39d9366be, type: 3}
   fxPalavra: {fileID: 8300000, guid: 5971620cfacc7c74ba29912678e66002, type: 3}
   fxError: {fileID: 8300000, guid: dbb31d0b31c748440a9b6503e28668da, type: 3}
@@ -2796,6 +2797,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CanvasCompletou
+      objectReference: {fileID: 0}
+    - target: {fileID: 8850245991134886819, guid: aa5dc2ef861845945b76e02d8db3135f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8850245991134886879, guid: aa5dc2ef861845945b76e02d8db3135f,
         type: 3}

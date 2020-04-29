@@ -1739,6 +1739,7 @@ MonoBehaviour:
   fxLetra: {fileID: 0}
   place: {fileID: 0}
   place2: {fileID: 0}
+  gameController: {fileID: 0}
 --- !u!1 &1115702280
 GameObject:
   m_ObjectHideFlags: 0
@@ -2019,6 +2020,7 @@ MonoBehaviour:
   fxLetra: {fileID: 0}
   place: {fileID: 0}
   place2: {fileID: 0}
+  gameController: {fileID: 0}
 --- !u!1 &1201013190
 GameObject:
   m_ObjectHideFlags: 0
@@ -2320,6 +2322,7 @@ MonoBehaviour:
   fxLetra: {fileID: 8300000, guid: 5ab94116774aa1642bf1205afe7d3b0d, type: 3}
   place: {fileID: 1970839182}
   place2: {fileID: 0}
+  gameController: {fileID: 0}
 --- !u!1 &1457611872
 GameObject:
   m_ObjectHideFlags: 0
@@ -2921,7 +2924,7 @@ MonoBehaviour:
   musicTitle: {fileID: 0}
   musicFase1: {fileID: 0}
   musicFase2: {fileID: 0}
-  fxFrase: {fileID: 8300000, guid: c9d87dc79c6d0454eb6cffa07efd0cea, type: 3}
+  fxFrase: {fileID: 8300000, guid: fce005813ce515542af50319bb10e986, type: 3}
   fxClick: {fileID: 8300000, guid: 6c7cf34fba55573438cc06b39d9366be, type: 3}
   fxPalavra: {fileID: 0}
   fxError: {fileID: 8300000, guid: dbb31d0b31c748440a9b6503e28668da, type: 3}
