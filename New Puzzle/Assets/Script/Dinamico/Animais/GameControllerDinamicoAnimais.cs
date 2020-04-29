@@ -314,9 +314,21 @@ public class GameControllerDinamicoAnimais : GameControllerBase
                 break;
         }
     }
-   
 
-   
+    public void Menu()
+    {
+
+        //audioController.changeMusic(audioController.musicTitle, "Menu2", true, slider);
+        SceneManager.LoadScene("MenuPrincipal");
+    }
+
+    public void Reentry()
+    {
+        this.hudGameOver.SetActive(false);
+        //audioController.changeMusic(audioController.musicFase1, "Fase_" + audioController.faseAtual, true, slider);
+        SceneManager.LoadScene("Fase_Sons");
+    }
+
     private void montarPalavra()
     {
         //Debug.Log(palavra);

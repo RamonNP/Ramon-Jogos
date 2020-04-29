@@ -11,10 +11,11 @@ public class MoveObject : MonoBehaviour
     private Transform place2;
     private Vector2 initialPosition;
 
-    public GameControllerDinamicoObjetos gameController;
+    public GameController gameController;
     private float deltaX, deltaY;
 
     public static bool locked;
+    public static bool antigo;
 
 
     //efeito quando arrasta pega aumenta.
@@ -27,7 +28,10 @@ public class MoveObject : MonoBehaviour
 
     void Start()
     {
-        gameController = FindObjectOfType(typeof(GameControllerDinamicoObjetos)) as GameControllerDinamicoObjetos;
+
+        gameController = FindObjectOfType(typeof(GameController)) as GameController;
+
+
         initialPosition = transform.position;
         x = transform.localScale.x;
         y = transform.localScale.y;

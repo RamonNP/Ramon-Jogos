@@ -17,7 +17,7 @@ public class MenuFaseSelect : MonoBehaviour
 
     public int maxFase;
     public int fase;
-
+    public bool principal;
     //Fases
     public GameObject animalEscrever;
     public GameObject abjetosEscrever;
@@ -25,7 +25,8 @@ public class MenuFaseSelect : MonoBehaviour
     public GameObject sonsAnimaisDinamico;
     public GameObject coresDinamico;
     public GameObject outrosDinamico;
-    public GameObject fase_4;
+    public GameObject meninaDoLeite;
+    /*public GameObject fase_4;
     public GameObject lock_4;
     public GameObject fase_5;
     public GameObject lock_5;
@@ -38,31 +39,56 @@ public class MenuFaseSelect : MonoBehaviour
     public GameObject fase_9;
     public GameObject lock_9;
     public GameObject fase_10;
-    public GameObject lock_10;
+    public GameObject lock_10;*/
 
     private List<String> fases = new List<string>();
 
     void Start()
     {
-        Debug.Log(cat);
         audioController = FindObjectOfType(typeof(AudioController)) as AudioController;
-        if (cat.Equals(CATEGORIA.DINAMICO))
+        if (!principal)
         {
-            animalEscrever.SetActive(!cat.Equals(CATEGORIA.DINAMICO));
+            if (cat.Equals(CATEGORIA.DINAMICO))
+            {
+                sonsAnimaisDinamico.SetActive(true);
+                coresDinamico.SetActive(true);
+
+                animalEscrever.SetActive(false);
+                abjetosEscrever.SetActive(false);
+                meninaDoLeite.SetActive(false);
+            } else if (cat.Equals(CATEGORIA.HISTORIAS))
+            {
+                meninaDoLeite.SetActive(true);
+
+                sonsAnimaisDinamico.SetActive(false);
+                coresDinamico.SetActive(false);
+
+                animalEscrever.SetActive(false);
+                abjetosEscrever.SetActive(false);
+            } else
+            {
+                sonsAnimaisDinamico.SetActive(false);
+                coresDinamico.SetActive(false);
+                meninaDoLeite.SetActive(false);
+
+                animalEscrever.SetActive(true);
+                abjetosEscrever.SetActive(true);
+            }
+            /*animalEscrever.SetActive(!cat.Equals(CATEGORIA.DINAMICO));
             abjetosEscrever.SetActive(!cat.Equals(CATEGORIA.DINAMICO));
-            outrosEscrever.SetActive(!cat.Equals(CATEGORIA.DINAMICO));
+            //outrosEscrever.SetActive(!cat.Equals(CATEGORIA.DINAMICO));
 
             sonsAnimaisDinamico.SetActive(cat.Equals(CATEGORIA.DINAMICO));
             coresDinamico.SetActive(cat.Equals(CATEGORIA.DINAMICO));
-            outrosDinamico.SetActive(cat.Equals(CATEGORIA.DINAMICO));
-
-        } 
+            //outrosDinamico.SetActive(cat.Equals(CATEGORIA.DINAMICO)); */
+        }
         
     }
     public void GoToScene(string Scena)
     {
       audioController.changeMusic(audioController.musicFase1, Scena, true, slider);
     }
+    /*
     private void OpenLevel(string level)
     {
         Debug.Log(level);
@@ -119,7 +145,7 @@ public class MenuFaseSelect : MonoBehaviour
                 break;
         }
     }
-
+    */
     IEnumerator LoadScreen(string scena)
     {
         
@@ -173,6 +199,9 @@ public class MenuFaseSelect : MonoBehaviour
         } else if(categoria.Equals("DINAMICO"))
         {
             cat = CATEGORIA.DINAMICO;
+        }else if(categoria.Equals("HISTORIAS"))
+        {
+            cat = CATEGORIA.HISTORIAS;
         }
         audioController.changeMusic(audioController.musicFase1, "Menu2", true, slider);
     }

@@ -23,11 +23,11 @@ public class GameControllerDinamicoCores : GameControllerBase
     public AudioClip audioAmarelo;
     public AudioClip audioAzul;
     public AudioClip audioVerde;
-    public AudioClip audioCavalo;
-    public AudioClip audioCoruja;
-    public AudioClip audioCobra;
-    public AudioClip audioCorvo;
-    public AudioClip audioElefante;
+    public AudioClip audioLaranja;
+    public AudioClip audioPink;
+    public AudioClip audioPreto;
+    public AudioClip audioRocho;
+    public AudioClip audioVermelho;
     public AudioClip audioLeao;
     public AudioClip audioLobo;
     public AudioClip audioMacaco;
@@ -57,11 +57,11 @@ public class GameControllerDinamicoCores : GameControllerBase
     public Sprite azul;
     public Sprite amarelo;
     public Sprite verde;
-    public Sprite cavalo;
-    public Sprite coruja;
-    public Sprite cobra;
-    public Sprite corvo;
-    public Sprite elefante;
+    public Sprite laranja;
+    public Sprite pink;
+    public Sprite preto;
+    public Sprite rocho;
+    public Sprite vermelho;
     public Sprite leao;
     public Sprite lobo;
     public Sprite macaco;
@@ -91,7 +91,6 @@ public class GameControllerDinamicoCores : GameControllerBase
     public GameObject fundo4;
     public GameObject fundo5;
     public GameObject fundo6;
-    private int posicao = 1;
     private AudioController audioController;
     private IEnumerator coroutine;
     // Start is called before the first frame update
@@ -155,19 +154,19 @@ public class GameControllerDinamicoCores : GameControllerBase
                 s1 = verde;
                 break;
             case 4:
-                s1 = cavalo;
+                s1 = laranja;
                 break;
             case 5:
-                s1 = coruja;
+                s1 = pink;
                 break;
             case 6:
-                s1 = cobra;
+                s1 = preto;
                 break;
             case 7:
-                s1 = corvo;
+                s1 = rocho;
                 break;
             case 8:
-                s1 = elefante;
+                s1 = vermelho;
                 break;
             case 9:
                 s1 = leao;
@@ -191,7 +190,7 @@ public class GameControllerDinamicoCores : GameControllerBase
                 s1 = porco;
                 break;
             case 16:
-                s1 = cavalo;
+                s1 = laranja;
                 break;
             case 17:
                 s1 = rato;
@@ -233,12 +232,10 @@ public class GameControllerDinamicoCores : GameControllerBase
     {
         MoveObjectDinamico.locked = true;
         posicaoAleatoria(new Random().Next(0, 3));
-
-        posicao = 1;
         faseAtual++;
         faseAtual = faseAtual % palavras.Length;
         palavra = palavras[faseAtual];
-        //Debug.Log("faseAtual "+faseAtual + "palavra" + palavra);
+        Debug.Log("faseAtual "+faseAtual + "palavra" + palavra);
         //reiniciarParametros();
         //escolherAudio(faseAtual);
         //tamanhoPalavra();
@@ -275,6 +272,20 @@ public class GameControllerDinamicoCores : GameControllerBase
         ok3.transform.position = new Vector2(x3, -2.45f);
         ok2.transform.position = new Vector2(x2, -2.45f);
         ok1.transform.position = new Vector2(x1, -2.45f);
+    }
+
+    public void Menu()
+    {
+
+        //audioController.changeMusic(audioController.musicTitle, "Menu2", true, slider);
+        SceneManager.LoadScene("MenuPrincipal");
+    }
+
+    public void Reentry()
+    {
+        this.hudGameOver.SetActive(false);
+        //audioController.changeMusic(audioController.musicFase1, "Fase_" + audioController.faseAtual, true, slider);
+        SceneManager.LoadScene("cores_dinamico");
     }
     private void reiniciarParametros()
     {
@@ -349,35 +360,35 @@ public class GameControllerDinamicoCores : GameControllerBase
                 ok1.GetComponent<SpriteRenderer>().sprite = PopularSprite();
                 audioSelecionado = audioAzul;
                 break;
-            case "Cavalo":
-                ok3.GetComponent<SpriteRenderer>().sprite = cavalo;
+            case "Laranja":
+                ok3.GetComponent<SpriteRenderer>().sprite = laranja;
                 ok2.GetComponent<SpriteRenderer>().sprite = PopularSprite();
                 ok1.GetComponent<SpriteRenderer>().sprite = PopularSprite();
-                audioSelecionado = audioCavalo;
+                audioSelecionado = audioLaranja;
                 break;
-            case "Coruja":
-                ok3.GetComponent<SpriteRenderer>().sprite = coruja;
+            case "Pink":
+                ok3.GetComponent<SpriteRenderer>().sprite = pink;
                 ok2.GetComponent<SpriteRenderer>().sprite = PopularSprite();
                 ok1.GetComponent<SpriteRenderer>().sprite = PopularSprite();
-                audioSelecionado = audioCoruja;
+                audioSelecionado = audioPink;
                 break;
-            case "Cobra":
-                ok3.GetComponent<SpriteRenderer>().sprite = cobra;
+            case "Preto":
+                ok3.GetComponent<SpriteRenderer>().sprite = preto;
                 ok2.GetComponent<SpriteRenderer>().sprite = PopularSprite();
                 ok1.GetComponent<SpriteRenderer>().sprite = PopularSprite();
-                audioSelecionado = audioCobra;
+                audioSelecionado = audioPreto;
                 break;
-            case "Corvo":
-                ok3.GetComponent<SpriteRenderer>().sprite = corvo;
+            case "Rocho":
+                ok3.GetComponent<SpriteRenderer>().sprite = rocho;
                 ok2.GetComponent<SpriteRenderer>().sprite = PopularSprite();
                 ok1.GetComponent<SpriteRenderer>().sprite = PopularSprite();
-                audioSelecionado = audioCorvo;
+                audioSelecionado = audioRocho;
                 break;
-            case "Elefante":
-                ok3.GetComponent<SpriteRenderer>().sprite = elefante;
+            case "Vermelho":
+                ok3.GetComponent<SpriteRenderer>().sprite = vermelho;
                 ok2.GetComponent<SpriteRenderer>().sprite = PopularSprite();
                 ok1.GetComponent<SpriteRenderer>().sprite = PopularSprite();
-                audioSelecionado = audioElefante;
+                audioSelecionado = audioVermelho;
                 break;
             case "Leao":
                 ok3.GetComponent<SpriteRenderer>().sprite = leao;

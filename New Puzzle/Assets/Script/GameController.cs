@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    public enum CATEGORIA { ESCREVER = 0, LER = 1000, CONTAR = 2000, DINAMICO = 8 };
-    public enum TIPO { ANIMAIS = 0, OBJETOS = 100, FRUTAS = 200, SONS = 8, CORES = 9 };
+    public enum CATEGORIA { ESCREVER = 0, LER = 1000, CONTAR = 2000, DINAMICO = 8, HISTORIAS = 10 };
+    public enum TIPO { ANIMAIS = 0, OBJETOS = 100, FRUTAS = 200, SONS = 8, CORES = 9, HISTORIAS = 10 };
 
 
 

@@ -29,14 +29,19 @@ public class MoveObjectDinamico : MonoBehaviour
     void Start()
     {
         //gameController = FindObjectOfType(typeof(GameControllerDinamicoAnimais)) as GameControllerDinamicoAnimais;
-
+        //Debug.Log(tipoDinamico);
         if (tipoDinamico.Equals("Cores"))
         {
+            //Debug.Log("Cores");
             gameController = FindObjectOfType(typeof(GameControllerDinamicoCores)) as GameControllerDinamicoCores;
-        }
-        else if (tipoDinamico.Equals("Sons"))
+        } else if (tipoDinamico.Equals("Sons"))
         {
+            //Debug.Log("Sons");
             gameController = FindObjectOfType(typeof(GameControllerDinamicoAnimais)) as GameControllerDinamicoAnimais;
+        } else if (tipoDinamico.Equals("Objetos"))
+        {
+            //Debug.Log("Objetos");
+            gameController = FindObjectOfType(typeof(GameControllerDinamicoObjetos)) as GameControllerDinamicoObjetos;
         }
         coroutine = waith();
         StartCoroutine("waith");
