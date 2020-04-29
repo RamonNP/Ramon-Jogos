@@ -3,15 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = System.Random;
 
-public class GameControllerDinamicoObjetos : MonoBehaviour
+public class GameControllerDinamicoObjetos : GameControllerBase
 {
     public string[] palavras = new String[3];
-    public AudioClip audioFase1;
-    public AudioClip audioFase2;
-    public AudioClip audioFase3;
-    public AudioClip audioFase4;
-    public AudioClip audioFase5;
+    public AudioClip[] audioItem= new AudioClip[3];
+    private bool travaError = false;
 
 
     public AudioClip audioA;
@@ -72,7 +70,30 @@ public class GameControllerDinamicoObjetos : MonoBehaviour
 
 
 
+    public Sprite[] spriteItem = new Sprite[3];
+    //public Sprite escova;
+    public Sprite balde;
+    public Sprite casa;
+    public Sprite panela;
+    public Sprite chapeu;
+    public Sprite aviao;
+    public Sprite bala;
+    public Sprite barco;
+    public Sprite boia;
+    public Sprite bola;
+    public Sprite bone;
+    public Sprite carro;
+    public Sprite pipa;
+    public Sprite skate;
+    public Sprite trem;
+
+    [Header("OBJETOS")]
+    public GameObject obj1;
+    public GameObject obj2;
+    public GameObject obj3;
+
     private string palavra;
+    [Header("PALAVRAS")]
     public GameObject ok1;
     public GameObject ok2;
     public GameObject ok3;
@@ -94,26 +115,44 @@ public class GameControllerDinamicoObjetos : MonoBehaviour
     public int error;
     public int pontos;
     public GameObject hudGameOver;
+    private float x1;
+    private float x2;
+    private float x3;
     void Start()
     {
+        posicaoAleatoria(new Random().Next(0, 3));
         audioController = FindObjectOfType(typeof(AudioController)) as AudioController;
-        if(faseAtual == 0)
-        {
-            audioController.fxFrase = audioFase1;
-            palavra = palavras[0];
-        } else if (faseAtual == 1)
-        {
-            audioController.fxFrase = audioFase2;
-            palavra = palavras[1];
-        } else if (faseAtual == 2)
-        {
-            audioController.fxFrase = audioFase3;
-            palavra = palavras[2];
-        }
+        audioController.fxFrase = audioItem[faseAtual];
+        palavra = palavras[faseAtual];
         tamanhoPalavra();
         montarPalavra();
+        montarObjeto();
     }
+    public void posicaoAleatoria(int posicaoAnimais)
+    {
+        if (posicaoAnimais == 0)
+        {
+            x1 = 0;
+            x2 = 4;
+            x3 = -4;
+        }
+        else if (posicaoAnimais == 1)
+        {
+            x1 = 4;
+            x2 = -4;
+            x3 = 0;
+        }
+        else if (posicaoAnimais == 2)
+        {
+            x1 = -4;
+            x2 = 0;
+            x3 = 4;
+        }
 
+        obj1.transform.position = new Vector2(x3, -2.45f);
+        obj2.transform.position = new Vector2(x2, -2.45f);
+        obj3.transform.position = new Vector2(x1, -2.45f);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -124,18 +163,28 @@ public class GameControllerDinamicoObjetos : MonoBehaviour
 }
     public void proximaFase()
     {
-
+        travaError = true;
+        posicaoAleatoria(new Random().Next(0, 3));
         posicao = 1;
         faseAtual++;
-        faseAtual = faseAtual % 3;
+        faseAtual = faseAtual % palavras.Length;
         palavra = palavras[faseAtual];
+        //Debug.Log(palavra);
         reiniciarParametros();
-        escolherAudio(faseAtual);
+        audioController.fxFrase = audioItem[faseAtual];
         tamanhoPalavra();
         montarPalavra();
         playPalavra();
+        hudGameOver.SetActive(false);
+        montarObjeto();
+        StartCoroutine("waith");
     }
-
+    IEnumerator waith()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        MoveObjectDinamico.locked = false;
+        travaError = false;
+    }
     private void reiniciarParametros()
     {
         ok1.SetActive(true);
@@ -152,33 +201,11 @@ public class GameControllerDinamicoObjetos : MonoBehaviour
         fundo6.SetActive(true);
 
     }
-    public void playFx(AudioClip fxAudio)
+    public override void playFx(AudioClip fxAudio)
     {
         audioController.playFx(fxAudio, 1);
     }
-    private void escolherAudio(int faseAtual)
-    {
-        switch (faseAtual+1)
-        {
-            case 1:
-                audioController.fxFrase = audioFase1;
-                break;
-            case 2:
-                audioController.fxFrase = audioFase2;
-                break;
-            case 3:
-                audioController.fxFrase = audioFase3;
-                break;
-            case 4:
-                audioController.fxFrase = audioFase4;
-                break;
-            case 5:
-                audioController.fxFrase = audioFase5;
-                break;
-            default:
-                break;
-        }
-    }
+   
     private void tamanhoPalavra()
     {
         int qtd = palavra.Length;
@@ -234,6 +261,71 @@ public class GameControllerDinamicoObjetos : MonoBehaviour
         return null;
 
     }
+    private void montarObjeto()
+    {
+
+        obj3.GetComponent<SpriteRenderer>().sprite = spriteItem[faseAtual];
+        obj2.GetComponent<SpriteRenderer>().sprite = PopularSprite();
+        obj1.GetComponent<SpriteRenderer>().sprite = PopularSprite();
+        /*
+        switch (palavra)
+        {
+            case "ESCOVA":
+                obj3.GetComponent<SpriteRenderer>().sprite = escova;
+                obj2.GetComponent<SpriteRenderer>().sprite = PopularSprite();
+                obj1.GetComponent<SpriteRenderer>().sprite = PopularSprite();
+                break;
+            case "BALDE":
+                obj3.GetComponent<SpriteRenderer>().sprite = balde;
+                obj2.GetComponent<SpriteRenderer>().sprite = PopularSprite();
+                obj1.GetComponent<SpriteRenderer>().sprite = PopularSprite();
+                //audioSelecionado = audioAbelha;
+                break;
+            case "CASA":
+                obj3.GetComponent<SpriteRenderer>().sprite = casa;
+                obj2.GetComponent<SpriteRenderer>().sprite = PopularSprite();
+                obj1.GetComponent<SpriteRenderer>().sprite = PopularSprite();
+                //audioSelecionado = audioAbelha;
+                break;
+            case "PANELA":
+                obj3.GetComponent<SpriteRenderer>().sprite = panela;
+                obj2.GetComponent<SpriteRenderer>().sprite = PopularSprite();
+                obj1.GetComponent<SpriteRenderer>().sprite = PopularSprite();
+                //audioSelecionado = audioAbelha;
+                break;
+            case "CHAPEU":
+                obj3.GetComponent<SpriteRenderer>().sprite = chapeu;
+                obj2.GetComponent<SpriteRenderer>().sprite = PopularSprite();
+                obj1.GetComponent<SpriteRenderer>().sprite = PopularSprite();
+                //audioSelecionado = audioAbelha;
+                break;
+            default:
+                //Console.WriteLine("Default case");
+                break;
+        }
+        */
+
+    }
+
+    int animalSpriteAnt;
+    public Sprite PopularSprite()
+    {
+        Sprite s1;
+        int animalSprite = new Random().Next(0, spriteItem.Length);
+        while (animalSprite == animalSpriteAnt || animalSprite == (faseAtual))
+        {
+            animalSprite = new Random().Next(0, spriteItem.Length);
+        }
+
+        Debug.Log(animalSprite);
+        s1 = spriteItem[animalSprite];
+        
+        animalSpriteAnt = animalSprite;
+        return s1;
+    }
+
+
+
     private void montarPalavra()
     {
         foreach (char c in palavra)
@@ -245,7 +337,7 @@ public class GameControllerDinamicoObjetos : MonoBehaviour
                     getOk().GetComponent<SpriteRenderer>().sprite = letraA;
                     break;
                 case 'B':
-                    Debug.Log(letraB);
+                    //Debug.Log(letraB);
 
                     getOk().GetComponent<SpriteRenderer>().sprite = letraB;
                     break;
@@ -324,7 +416,7 @@ public class GameControllerDinamicoObjetos : MonoBehaviour
             }
         }
     }
-    public void addRight()
+    public override void addRight()
     {
         right++;
         if (right >= pontos)
@@ -340,10 +432,14 @@ public class GameControllerDinamicoObjetos : MonoBehaviour
         }
         Debug.Log(" right" + right);
     }
-    public void addError()
+    public override void addError()
     {
-        error++;
-        audioController.playFx(audioController.fxError, 1);
+        if(!travaError)
+        {
+            error++;
+            audioController.playFx(audioController.fxError, 1);
+        }
+        
     }
 
     IEnumerator playVictoryEnum()
@@ -360,4 +456,10 @@ public class GameControllerDinamicoObjetos : MonoBehaviour
         Debug.Log(" victory ");
         audioController.pauseMusic();
     }
+
+    public override AudioClip GetAudioSelecionado()
+    {
+        throw new NotImplementedException();
+    }
+
 }

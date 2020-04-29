@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = System.Random;
 
-public class GameControllerDinamicoAnimais : MonoBehaviour
+public class GameControllerDinamicoAnimais : GameControllerBase
 {
     private float x1;
     private float x2;
@@ -287,7 +287,7 @@ public class GameControllerDinamicoAnimais : MonoBehaviour
         fundo3.SetActive(true);
 
     }
-    public void playFx(AudioClip fxAudio)
+    public override void playFx(AudioClip fxAudio)
     {
         audioController.playFx(fxAudio, 1);
     }
@@ -314,9 +314,21 @@ public class GameControllerDinamicoAnimais : MonoBehaviour
                 break;
         }
     }
-   
 
-   
+    public void Menu()
+    {
+
+        //audioController.changeMusic(audioController.musicTitle, "Menu2", true, slider);
+        SceneManager.LoadScene("MenuPrincipal");
+    }
+
+    public void Reentry()
+    {
+        this.hudGameOver.SetActive(false);
+        //audioController.changeMusic(audioController.musicFase1, "Fase_" + audioController.faseAtual, true, slider);
+        SceneManager.LoadScene("Fase_Sons");
+    }
+
     private void montarPalavra()
     {
         //Debug.Log(palavra);
@@ -451,7 +463,7 @@ public class GameControllerDinamicoAnimais : MonoBehaviour
                 break;
         }
     }
-    public void addRight()
+    public override void addRight()
     {
         right++;
         if (right >= pontos)
@@ -467,7 +479,7 @@ public class GameControllerDinamicoAnimais : MonoBehaviour
         }
         //Debug.Log(" right" + right);
     }
-    public void addError()
+    public override void addError()
     {
         error++;
         audioController.playFx(audioController.fxError, 1);
@@ -487,4 +499,9 @@ public class GameControllerDinamicoAnimais : MonoBehaviour
         //Debug.Log(" victory ");
         audioController.pauseMusic();
     }
+    public override AudioClip GetAudioSelecionado()
+    {
+        return audioSelecionado;
+    }
+
 }

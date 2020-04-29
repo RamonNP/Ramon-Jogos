@@ -1405,6 +1405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfcc7434c7244e947bdd7b5f90eb4efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playinicial: 0
   xSize: 5
   ySize: 5
   tempoInciarPalavra: 1
@@ -2214,7 +2215,7 @@ MonoBehaviour:
   musicTitle: {fileID: 0}
   musicFase1: {fileID: 0}
   musicFase2: {fileID: 0}
-  fxFrase: {fileID: 8300000, guid: 37080b1fb376d1d4ca9bfebbcd5f9712, type: 3}
+  fxFrase: {fileID: 8300000, guid: c1e200f1dc39ee046ad8732f15a36eef, type: 3}
   fxClick: {fileID: 8300000, guid: 6c7cf34fba55573438cc06b39d9366be, type: 3}
   fxPalavra: {fileID: 8300000, guid: 03d05a13f6bd4dd4cb38a1bf5b4ae1f5, type: 3}
   fxError: {fileID: 8300000, guid: dbb31d0b31c748440a9b6503e28668da, type: 3}

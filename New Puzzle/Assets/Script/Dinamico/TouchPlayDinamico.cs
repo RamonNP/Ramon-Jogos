@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class TouchPlayDinamico : MonoBehaviour
 {
+    public string tipoDinamico;
     private AudioController audioController;
-    private GameControllerDinamicoAnimais gameController;
+    private GameControllerBase gameController;
     public bool playinicial;
     public float xSize;
     public float ySize;
@@ -15,10 +16,17 @@ public class TouchPlayDinamico : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioController = FindObjectOfType(typeof(AudioController)) as AudioController;
-        gameController = FindObjectOfType(typeof(GameControllerDinamicoAnimais)) as GameControllerDinamicoAnimais;
+        if(tipoDinamico.Equals("Cores"))
+        {
+            audioController = FindObjectOfType(typeof(AudioController)) as AudioController;
+            gameController = FindObjectOfType(typeof(GameControllerDinamicoCores)) as GameControllerDinamicoCores;
+        } else if (tipoDinamico.Equals("Sons"))
+        {
+            audioController = FindObjectOfType(typeof(AudioController)) as AudioController;
+            gameController = FindObjectOfType(typeof(GameControllerDinamicoAnimais)) as GameControllerDinamicoAnimais;
+        }
 
-        if (playinicial)
+            if (playinicial)
         {
             //coroutine = playAudioEnumSon();
             //StartCoroutine("playAudioEnumSon");
@@ -75,8 +83,9 @@ public class TouchPlayDinamico : MonoBehaviour
             case TouchPhase.Ended:
                 if (GetComponent<Collider2D>() == Physics2D.OverlapPoint(touchPos))
                 {
-
-                    audioController.playFx(gameController.audioSelecionado, 1);
+                    //gameController.GetAudioSelecionado();
+                    //Debug.Log(gameController.GetAudioSelecionado());
+                    audioController.playFx(gameController.GetAudioSelecionado(), 1);
 
                 }
                 if (gameController != null)

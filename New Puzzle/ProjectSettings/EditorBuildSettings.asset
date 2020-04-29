@@ -89,4 +89,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ler/Fase_1204.unity
     guid: 02e18d8f8b59a2f4bae81cb95bfe6b87
+  - enabled: 1
+    path: Assets/Scenes/Dinamico/cores_dinamico.unity
+    guid: 7a40e93e57cd7e348a64e0a2725c0221
+  - enabled: 1
+    path: Assets/Scenes/Dinamico/Fase_Sons.unity
+    guid: d99ce74db3daa0d4f9645d2660216304
+  - enabled: 1
+    path: Assets/Scenes/Historias/MeninaDoLeite.unity
+    guid: b35b2c7c190e28b4ba741b3b62889c17
   m_configObjects: {}
