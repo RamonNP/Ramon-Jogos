@@ -220,9 +220,12 @@ public class MenuFaseSelect : MonoBehaviour
         } else if(tipo.Equals("DINAMICO"))
         {
             TIPO = TIPO.SONS;
+        } else
+        {
+            audioController.changeMusic(audioController.musicFase1, tipo, true, slider);
         }
         int fase = (int)cat + (int)TIPO + 1;
-        Debug.Log(fase);
+        //Debug.Log(fase);
         audioController.changeMusic(audioController.musicFase1, "Fase_"+ fase, true, slider);
     }
     

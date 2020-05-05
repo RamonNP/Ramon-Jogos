@@ -91,7 +91,6 @@ public class GameControllerDinamicoAnimais : GameControllerBase
     public GameObject fundo4;
     public GameObject fundo5;
     public GameObject fundo6;
-    private int posicao = 1;
     private AudioController audioController;
     private IEnumerator coroutine;
     // Start is called before the first frame update
@@ -131,6 +130,7 @@ public class GameControllerDinamicoAnimais : GameControllerBase
         audioController.playPalavra();
     }
     int animalSpriteAnt;
+
     public Sprite PopularSprite()
     {
         Sprite s1 ;
@@ -235,7 +235,6 @@ public class GameControllerDinamicoAnimais : GameControllerBase
         MoveObjectDinamico.locked = true;
         posicaoAleatoria(new Random().Next(0, 3));
 
-        posicao = 1;
         faseAtual++;
         faseAtual = faseAtual % palavras.Length;
         palavra = palavras[faseAtual];
