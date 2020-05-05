@@ -11,36 +11,6 @@ public class GameControllerDinamicoObjetos : GameControllerBase
     public AudioClip[] audioItem= new AudioClip[3];
     private bool travaError = false;
 
-
-    public AudioClip audioA;
-    public AudioClip audioB;
-    public AudioClip audioC;
-    public AudioClip audioD;
-    public AudioClip audioE;
-    public AudioClip audioF;
-    public AudioClip audioG;
-    public AudioClip audioH;
-    public AudioClip audioI;
-    public AudioClip audioJ;
-    public AudioClip audioK;
-    public AudioClip audioL;
-    public AudioClip audioM;
-    public AudioClip audioN;
-    public AudioClip audioO;
-    public AudioClip audioP;
-    public AudioClip audioQ;
-    public AudioClip audioR;
-    public AudioClip audioS;
-    public AudioClip audioT;
-    public AudioClip audioU;
-    public AudioClip audioV;
-    public AudioClip audioX;
-    public AudioClip audioY;
-    public AudioClip audioZ;
-    public AudioClip audioW;
-   
-   
-
     public Sprite letraA;
     public Sprite letraB;
     public Sprite letraC;
@@ -71,21 +41,6 @@ public class GameControllerDinamicoObjetos : GameControllerBase
 
 
     public Sprite[] spriteItem = new Sprite[3];
-    //public Sprite escova;
-    public Sprite balde;
-    public Sprite casa;
-    public Sprite panela;
-    public Sprite chapeu;
-    public Sprite aviao;
-    public Sprite bala;
-    public Sprite barco;
-    public Sprite boia;
-    public Sprite bola;
-    public Sprite bone;
-    public Sprite carro;
-    public Sprite pipa;
-    public Sprite skate;
-    public Sprite trem;
 
     [Header("OBJETOS")]
     public GameObject obj1;
@@ -267,43 +222,6 @@ public class GameControllerDinamicoObjetos : GameControllerBase
         obj3.GetComponent<SpriteRenderer>().sprite = spriteItem[faseAtual];
         obj2.GetComponent<SpriteRenderer>().sprite = PopularSprite();
         obj1.GetComponent<SpriteRenderer>().sprite = PopularSprite();
-        /*
-        switch (palavra)
-        {
-            case "ESCOVA":
-                obj3.GetComponent<SpriteRenderer>().sprite = escova;
-                obj2.GetComponent<SpriteRenderer>().sprite = PopularSprite();
-                obj1.GetComponent<SpriteRenderer>().sprite = PopularSprite();
-                break;
-            case "BALDE":
-                obj3.GetComponent<SpriteRenderer>().sprite = balde;
-                obj2.GetComponent<SpriteRenderer>().sprite = PopularSprite();
-                obj1.GetComponent<SpriteRenderer>().sprite = PopularSprite();
-                //audioSelecionado = audioAbelha;
-                break;
-            case "CASA":
-                obj3.GetComponent<SpriteRenderer>().sprite = casa;
-                obj2.GetComponent<SpriteRenderer>().sprite = PopularSprite();
-                obj1.GetComponent<SpriteRenderer>().sprite = PopularSprite();
-                //audioSelecionado = audioAbelha;
-                break;
-            case "PANELA":
-                obj3.GetComponent<SpriteRenderer>().sprite = panela;
-                obj2.GetComponent<SpriteRenderer>().sprite = PopularSprite();
-                obj1.GetComponent<SpriteRenderer>().sprite = PopularSprite();
-                //audioSelecionado = audioAbelha;
-                break;
-            case "CHAPEU":
-                obj3.GetComponent<SpriteRenderer>().sprite = chapeu;
-                obj2.GetComponent<SpriteRenderer>().sprite = PopularSprite();
-                obj1.GetComponent<SpriteRenderer>().sprite = PopularSprite();
-                //audioSelecionado = audioAbelha;
-                break;
-            default:
-                //Console.WriteLine("Default case");
-                break;
-        }
-        */
 
     }
 
@@ -317,7 +235,7 @@ public class GameControllerDinamicoObjetos : GameControllerBase
             animalSprite = new Random().Next(0, spriteItem.Length);
         }
 
-        Debug.Log(animalSprite);
+        //Debug.Log(animalSprite);
         s1 = spriteItem[animalSprite];
         
         animalSpriteAnt = animalSprite;
@@ -430,7 +348,7 @@ public class GameControllerDinamicoObjetos : GameControllerBase
         {
             // audioController.playFx(audioController.fx, 1);
         }
-        Debug.Log(" right" + right);
+        //Debug.Log(" right" + right);
     }
     public override void addError()
     {
@@ -453,7 +371,7 @@ public class GameControllerDinamicoObjetos : GameControllerBase
     public void victory()
     {
         hudGameOver.SetActive(true);
-        Debug.Log(" victory ");
+        //Debug.Log(" victory ");
         audioController.pauseMusic();
     }
 

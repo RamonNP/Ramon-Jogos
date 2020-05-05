@@ -156,6 +156,138 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &107941681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 107941682}
+  - component: {fileID: 107941685}
+  - component: {fileID: 107941684}
+  - component: {fileID: 107941683}
+  m_Layer: 5
+  m_Name: Menu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &107941682
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107941681}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 28.5}
+  m_LocalScale: {x: 1.000065, y: 1.000065, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1225847692}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -230, y: -50}
+  m_SizeDelta: {x: 80, y: 80}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &107941683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107941681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 107941684}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4381714743478814163}
+        m_MethodName: MenuFaseSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &107941684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107941681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 3055179230697656751, guid: ba57e664bc3606540bd3aaed16353d3b,
+    type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &107941685
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107941681}
+  m_CullTransparentMesh: 0
 --- !u!1 &178245752
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,12 +319,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 1225847692}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -87, y: -30}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: -140, y: -50}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &178245754
 MonoBehaviour:
@@ -441,12 +573,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1225847692}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -30, y: -30}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: -50, y: -50}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &444249610
 MonoBehaviour:
@@ -1531,7 +1663,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 21300000, guid: f8b0a702d20df8a4caa2f7aa078b390f, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1539,7 +1671,7 @@ SpriteRenderer:
   m_Size: {x: 26.203674, y: 26.410002}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1021956894
@@ -1586,65 +1718,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   palavras:
-  - ESCOVA
-  - BALDE
-  - CASA
-  - PANELA
-  - CHAPEU
-  - AVIAO
-  - BOLA
-  - BARCO
-  - BOIA
-  - BOLA
-  - BONE
-  - CARRO
-  - PIPA
-  - SKATE
-  - TREM
-  - CAFE
+  - ABELHA
+  - CAVALO
+  - DRAGAO
+  - GALO
+  - FOCA
+  - GIRAFA
+  - HIENA
+  - IGUANA
+  - JABUTI
+  - LOBO
+  - MACACO
+  - NAJA
+  - OVELHA
+  - POLVO
+  - QUATI
+  - URSO
+  - VACA
+  - ZEBRA
+  - BALEIA
+  - RATO
+  - SAPO
+  - TIGRE
   audioItem:
-  - {fileID: 8300000, guid: aac0084054f67804686c3319fc797b12, type: 3}
-  - {fileID: 8300000, guid: ecf0e674440ed614f9b6cc359e32c3d8, type: 3}
-  - {fileID: 8300000, guid: 6761369b5c952474896f4e7edb8961a7, type: 3}
-  - {fileID: 8300000, guid: fce005813ce515542af50319bb10e986, type: 3}
-  - {fileID: 8300000, guid: e97f029ff0ec3f247b87a2770240669c, type: 3}
-  - {fileID: 8300000, guid: 63f1c0e5e2d14d1439efcdcbcb46e397, type: 3}
-  - {fileID: 8300000, guid: f53b526b9bf48b047aab7b8da1afcbbe, type: 3}
-  - {fileID: 8300000, guid: d6bbdbcef6fb028458d5f2b2e6838d46, type: 3}
-  - {fileID: 8300000, guid: 6b9f9989b5b71e6438c863344f04b378, type: 3}
-  - {fileID: 8300000, guid: f53b526b9bf48b047aab7b8da1afcbbe, type: 3}
-  - {fileID: 8300000, guid: 512057adc4e6c5c4f9fe3025532b1404, type: 3}
-  - {fileID: 8300000, guid: 13ed0a1d571e8cd49b36c12c5b151c20, type: 3}
-  - {fileID: 8300000, guid: 162c7e91854481b4ea809aa80a2d25ee, type: 3}
-  - {fileID: 8300000, guid: 6b962591c1d75dd49ac26466c319ebf7, type: 3}
-  - {fileID: 8300000, guid: 1db899be6eced8949a9bff1d4813995b, type: 3}
-  - {fileID: 8300000, guid: 1db899be6eced8949a9bff1d4813995b, type: 3}
-  audioA: {fileID: 8300000, guid: 36b91fe17113dcf47af7e4850317ea6e, type: 3}
-  audioB: {fileID: 8300000, guid: 57f9adb16c1920c41bb484e4023a9ec0, type: 3}
-  audioC: {fileID: 8300000, guid: c30c63da20d18344fba5241d4419a058, type: 3}
-  audioD: {fileID: 8300000, guid: e70b0c918c4bd344d8d9654dbb12c5eb, type: 3}
-  audioE: {fileID: 8300000, guid: 011469f4b6025b64db71206ed0e255ed, type: 3}
-  audioF: {fileID: 0}
-  audioG: {fileID: 0}
-  audioH: {fileID: 8300000, guid: a7aa5eda0dc31044095ef25fb08a1e0f, type: 3}
-  audioI: {fileID: 8300000, guid: 357a2ba6f2ca580478f32b8551c8e7a9, type: 3}
-  audioJ: {fileID: 0}
-  audioK: {fileID: 0}
-  audioL: {fileID: 8300000, guid: 9e0192ccd1cde8542b4dab27be185032, type: 3}
-  audioM: {fileID: 8300000, guid: 5ffc2b3e67208fd48b3b1fe0f4bc56e2, type: 3}
-  audioN: {fileID: 8300000, guid: ea77ae7df1945374b952a17cb471a9c1, type: 3}
-  audioO: {fileID: 8300000, guid: 378ff09d2d585df41888bfe6d4c4ae02, type: 3}
-  audioP: {fileID: 8300000, guid: 3ff9307d20f2496428736c84a14259b1, type: 3}
-  audioQ: {fileID: 0}
-  audioR: {fileID: 8300000, guid: 5c62416c59d00be4ba8577dfd393d599, type: 3}
-  audioS: {fileID: 8300000, guid: 69364bc6af8060e40afbb4d4d1a87a51, type: 3}
-  audioT: {fileID: 8300000, guid: c3f23d683b00f1b43b212236f87e506a, type: 3}
-  audioU: {fileID: 8300000, guid: 69d335a1a9cf1c64fabdfd576bccb843, type: 3}
-  audioV: {fileID: 8300000, guid: 1343b3e236e148f4094c1d97e7791ea8, type: 3}
-  audioX: {fileID: 0}
-  audioY: {fileID: 0}
-  audioZ: {fileID: 0}
-  audioW: {fileID: 0}
+  - {fileID: 8300000, guid: 995ddbe6f145f6541a2b47846e7a81b6, type: 3}
+  - {fileID: 8300000, guid: 30eb1b64a79c3224e9d07a08a74c8c22, type: 3}
+  - {fileID: 8300000, guid: 9125681ce34dbbf4a889538e24b2917e, type: 3}
+  - {fileID: 8300000, guid: e17bc54baa616fb4882b0c24258f565e, type: 3}
+  - {fileID: 8300000, guid: 54d9ad31ff88f9b429f6e99d56be31e5, type: 3}
+  - {fileID: 8300000, guid: ba604e08a9c4c6044b337d9eb8ce3f30, type: 3}
+  - {fileID: 8300000, guid: 8b724637cc472834992a5f3bbc173e77, type: 3}
+  - {fileID: 8300000, guid: de3b8156b96e8bc46bf9ba5389069820, type: 3}
+  - {fileID: 8300000, guid: 62d55cb7a2901ed44adb2f0326020ebc, type: 3}
+  - {fileID: 8300000, guid: 13a811a19a40392429ecb27197a00efd, type: 3}
+  - {fileID: 8300000, guid: 2507d42d81dfe4244844d75967c824e0, type: 3}
+  - {fileID: 8300000, guid: 7ca9f48bc0f549340af6f1039af3f852, type: 3}
+  - {fileID: 8300000, guid: 2bdad1eec29cdef4cbaa1ba7833e91d0, type: 3}
+  - {fileID: 8300000, guid: 79461a2916d4aab4e8872b0ae50d4cbc, type: 3}
+  - {fileID: 8300000, guid: 24e9dad83b33d34478d2d2b40f8c25a1, type: 3}
+  - {fileID: 8300000, guid: 2bb6ae22d896a4f45b4d5071b4ae042a, type: 3}
+  - {fileID: 8300000, guid: a9f9e5d1a7d2cd54bb27dcc5e38bda29, type: 3}
+  - {fileID: 8300000, guid: cb46facc217c5634fa37324fa5ca8cba, type: 3}
+  - {fileID: 8300000, guid: c16089a276f90a84a8689eee7241d685, type: 3}
+  - {fileID: 8300000, guid: bdf28af680eb68f448caa26730a04ff8, type: 3}
+  - {fileID: 8300000, guid: 095e2b8ff8c2fbf4d9c7e4408441be69, type: 3}
+  - {fileID: 8300000, guid: 38adb368ed742524ab0dd00168be1c7a, type: 3}
   letraA: {fileID: 2174534930924726076, guid: 6ae8c98c52fa2474eb8ddf17d0e02476, type: 3}
   letraB: {fileID: 6581204048378886600, guid: 6ae8c98c52fa2474eb8ddf17d0e02476, type: 3}
   letraC: {fileID: 2818046334708425133, guid: 6ae8c98c52fa2474eb8ddf17d0e02476, type: 3}
@@ -1672,36 +1790,28 @@ MonoBehaviour:
   letraY: {fileID: -6224358416508749970, guid: 6ae8c98c52fa2474eb8ddf17d0e02476, type: 3}
   letraZ: {fileID: 6185228365497522686, guid: 6ae8c98c52fa2474eb8ddf17d0e02476, type: 3}
   spriteItem:
-  - {fileID: 21300000, guid: 6bffb1295809318428c7b30f2f19c150, type: 3}
-  - {fileID: 21300000, guid: 22f9d1fa9ccf9814cb3ad77698bca272, type: 3}
-  - {fileID: 21300000, guid: ba766e1fcd4ecb6438a6c75b9f49c5ac, type: 3}
-  - {fileID: 21300000, guid: 3d4a372ea79106546a1c77fb8bd6f96d, type: 3}
-  - {fileID: 21300000, guid: d8c5c18edd0713345898d1a76b8d0f31, type: 3}
-  - {fileID: 21300000, guid: bb4ced90d4e8f704abe6da54d4ee9082, type: 3}
-  - {fileID: 21300000, guid: 1cfa29718d523cc45b5a8b793f18a4c7, type: 3}
-  - {fileID: 21300000, guid: 53e9142979a78554482dab718e1bb3c5, type: 3}
-  - {fileID: 21300000, guid: 4c2ed4b2d02b9e342b1267cd04db7a33, type: 3}
-  - {fileID: 21300000, guid: 1cfa29718d523cc45b5a8b793f18a4c7, type: 3}
-  - {fileID: 21300000, guid: 4a8757c8acf3d604296a30c5aad105da, type: 3}
-  - {fileID: 21300000, guid: e55f137ce6fac3146905b1ec149270cc, type: 3}
-  - {fileID: 21300000, guid: 44c8f15fb538b0641a3f772bf22de28d, type: 3}
-  - {fileID: 21300000, guid: f5c1bb2f778da514cb9889dfa4a1c739, type: 3}
-  - {fileID: 21300000, guid: eb87c52e81e610a45aeb8f016a3a87e0, type: 3}
-  - {fileID: 21300000, guid: eb87c52e81e610a45aeb8f016a3a87e0, type: 3}
-  balde: {fileID: 21300000, guid: 22f9d1fa9ccf9814cb3ad77698bca272, type: 3}
-  casa: {fileID: 21300000, guid: ba766e1fcd4ecb6438a6c75b9f49c5ac, type: 3}
-  panela: {fileID: 21300000, guid: 3d4a372ea79106546a1c77fb8bd6f96d, type: 3}
-  chapeu: {fileID: 21300000, guid: d8c5c18edd0713345898d1a76b8d0f31, type: 3}
-  aviao: {fileID: 0}
-  bala: {fileID: 0}
-  barco: {fileID: 0}
-  boia: {fileID: 0}
-  bola: {fileID: 0}
-  bone: {fileID: 0}
-  carro: {fileID: 0}
-  pipa: {fileID: 0}
-  skate: {fileID: 0}
-  trem: {fileID: 0}
+  - {fileID: 21300000, guid: c783a09d678a5e74bbe1377a72c5b2cc, type: 3}
+  - {fileID: 21300000, guid: 005428db489433f45b7fbc446a11e1a7, type: 3}
+  - {fileID: 21300000, guid: f368028971983f74a832cbc2450a0e8a, type: 3}
+  - {fileID: 21300000, guid: 7238559d4fb28c24791a677a9ca575e3, type: 3}
+  - {fileID: 21300000, guid: a3fb15e74e02983469ea198b711fccd8, type: 3}
+  - {fileID: 21300000, guid: d6a722cf1a839164caed3ecdb10fddcc, type: 3}
+  - {fileID: 21300000, guid: ff9bd705ddbcdb54e81126119df14d50, type: 3}
+  - {fileID: 21300000, guid: e77a41c497ccaca4bafa121c37e1fdf4, type: 3}
+  - {fileID: 21300000, guid: 14f2b14ec0735584fb96bffa542b8253, type: 3}
+  - {fileID: 21300000, guid: 8a35c56db114e9d4cb5077204127e2a9, type: 3}
+  - {fileID: 21300000, guid: 42d8eba57e95c734da4aa2eb651255f4, type: 3}
+  - {fileID: 21300000, guid: c46e91caa54f06143b40b66efb55ef06, type: 3}
+  - {fileID: 21300000, guid: 5e8fe3f4bcae5e345a48926211ea7e7b, type: 3}
+  - {fileID: 21300000, guid: 6e560b84fbb0fbf43a178616538bbb2c, type: 3}
+  - {fileID: 21300000, guid: 95a5678550d92d24585eefa202c6a967, type: 3}
+  - {fileID: 21300000, guid: 5ecfb0ca19cf7154aa54640c45fa560c, type: 3}
+  - {fileID: 21300000, guid: 336e4db9d3106c94bb4c771d4d2af2a1, type: 3}
+  - {fileID: 21300000, guid: f3b504896c4c6784abf930070b334550, type: 3}
+  - {fileID: 21300000, guid: e6c6a8a9ae57a4745bf0f816a48ab87c, type: 3}
+  - {fileID: 21300000, guid: 25f8e4df7ec29b9488e38e1b782cc6a5, type: 3}
+  - {fileID: 21300000, guid: 96e7d38bad5d33c4ca8911b8ebe4467f, type: 3}
+  - {fileID: 21300000, guid: d2b1e1fde83b65c4fa9bc2c5a97cdda7, type: 3}
   obj1: {fileID: 1157724402}
   obj2: {fileID: 1021956890}
   obj3: {fileID: 1450586974}
@@ -1949,7 +2059,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 21300000, guid: ba766e1fcd4ecb6438a6c75b9f49c5ac, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1957,7 +2067,7 @@ SpriteRenderer:
   m_Size: {x: 26.203674, y: 26.410002}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1157724404
@@ -2109,7 +2219,7 @@ GameObject:
   - component: {fileID: 1225847691}
   - component: {fileID: 1225847690}
   - component: {fileID: 1225847689}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CHud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2145,7 +2255,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -2187,6 +2297,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 107941682}
   - {fileID: 444249609}
   - {fileID: 178245753}
   m_Father: {fileID: 0}
@@ -2297,7 +2408,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 21300000, guid: 3d4a372ea79106546a1c77fb8bd6f96d, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2305,7 +2416,7 @@ SpriteRenderer:
   m_Size: {x: 26.203674, y: 26.410002}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1450586978

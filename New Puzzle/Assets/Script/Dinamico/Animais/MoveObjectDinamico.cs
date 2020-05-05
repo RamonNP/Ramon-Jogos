@@ -25,6 +25,8 @@ public class MoveObjectDinamico : MonoBehaviour
     float xN;
     float yN;
 
+    public Transform Place { get => place; set => place = value; }
+    public Transform Place2 { get => place2; set => place2 = value; }
 
     void Start()
     {
@@ -102,19 +104,19 @@ public class MoveObjectDinamico : MonoBehaviour
 
                 case TouchPhase.Ended:
                     
-                    if (place!= null && (Mathf.Abs(transform.position.x - place.position.x) <= 1.0f &&
-                       Mathf.Abs(transform.position.y - place.position.y) <= 1.0f))
+                    if (Place!= null && (Mathf.Abs(transform.position.x - Place.position.x) <= 1.0f &&
+                       Mathf.Abs(transform.position.y - Place.position.y) <= 1.0f))
                     {
-                        transform.position = new Vector2(place.position.x, place.position.y);
+                        transform.position = new Vector2(Place.position.x, Place.position.y);
                         locked = true;
                         transform.localScale = new Vector2(x, y);
                         gameController.addRight();
                         gameController.playFx(fxLetra);
                         //place = null;
-                    } else if (place2 != null && (Mathf.Abs(transform.position.x - place2.position.x) <= 1.0f &&
-                       Mathf.Abs(transform.position.y - place2.position.y) <= 1.0f))
+                    } else if (Place2 != null && (Mathf.Abs(transform.position.x - Place2.position.x) <= 1.0f &&
+                       Mathf.Abs(transform.position.y - Place2.position.y) <= 1.0f))
                     {
-                        transform.position = new Vector2(place2.position.x, place2.position.y);
+                        transform.position = new Vector2(Place2.position.x, Place2.position.y);
                         locked = true;
                         transform.localScale = new Vector2(x, y);
                         gameController.addRight();

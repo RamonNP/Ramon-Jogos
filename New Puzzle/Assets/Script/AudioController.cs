@@ -112,9 +112,20 @@ public class AudioController : MonoBehaviour
             //Debug.Log(async == null);
             if (async == null && slider != null)
             {
-                slider.gameObject.SetActive(true);
-                async = SceneManager.LoadSceneAsync(tradeScene);
-                async.allowSceneActivation = false;
+                try
+                {
+                    slider.gameObject.SetActive(true);
+                    async = SceneManager.LoadSceneAsync(tradeScene);
+                    async.allowSceneActivation = false;
+                }
+                catch (System.Exception p)
+                {
+                    Debug.Log("ERRRRRRRRRRROOOOOOOOOOO"+p.StackTrace);
+                    slider.gameObject.SetActive(true);
+                    async = SceneManager.LoadSceneAsync("Menu2");
+                    async.allowSceneActivation = false;
+                    throw;
+                }
                 while (async.isDone == false)
                 {
                     //Debug.Log(newScene);
@@ -129,6 +140,7 @@ public class AudioController : MonoBehaviour
 
             }
         }
+        /*
         for (float volume = maxVol; volume >= 0; volume -= 0.1f)
         {
             yield return new WaitForSecondsRealtime(0.1f);
@@ -144,7 +156,7 @@ public class AudioController : MonoBehaviour
             sMusic.volume = volume;
         }
         sMusic.volume = maxVol;
-        async = null;
+        async = null;*/
     }
     public void playPalavra()
     {
@@ -176,6 +188,9 @@ public class AudioController : MonoBehaviour
         playFx(fxFrase, 1);
     }
 
+    public void MenuFaseSelect()
+    {
+        SceneManager.LoadScene("MenuPrincipal");
+    }
 
-    
 }
