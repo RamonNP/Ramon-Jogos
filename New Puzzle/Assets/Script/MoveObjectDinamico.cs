@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveObject4 : MonoBehaviour
+public class MoveObjectDinamicoEscrever : MonoBehaviour
 {
+
+    public int obj;
     public AudioClip fxLetra;
     [SerializeField]
     private Transform place;
@@ -78,8 +80,8 @@ public class MoveObject4 : MonoBehaviour
                     {
                         if (gameController.lockKK == 0)
                         {
-                            gameController.lockKK = 4;
-                        } else if (gameController.lockKK == 4)
+                            gameController.lockKK = obj;
+                        } else if (gameController.lockKK == obj)
                         {
                             transform.position = new Vector3(touchPos.x - deltaX, touchPos.y - deltaY, z);
                             this.GetComponent<SpriteRenderer>().sortingOrder = 7;

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameController : MonoBehaviour
+public class GameController : GameControllerBase
 {
     public enum CATEGORIA { ESCREVER = 0, LER = 1000, CONTAR = 2000, DINAMICO = 8, HISTORIAS = 10 };
     public enum TIPO { ANIMAIS = 0, OBJETOS = 100, FRUTAS = 200, SONS = 8, CORES = 9, HISTORIAS = 10 };
@@ -15,7 +15,6 @@ public class GameController : MonoBehaviour
     public TIPO tipo;
     private int fases;
     public static Dictionary <int, float> itensPosition;
-    public int lockKK;
     public int pontos;
     public Slider slider;
     public GameObject hudGameOver;
@@ -23,6 +22,9 @@ public class GameController : MonoBehaviour
     public int right;
     public int error;
     private IEnumerator coroutine;
+
+    public override int lockKK { get => lockKK; set => lockKK = value; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,12 +40,12 @@ public class GameController : MonoBehaviour
     {
        
     }
-    public void playFx(AudioClip fxAudio)
+    public override void playFx(AudioClip fxAudio)
     {
         audioController.playFx(fxAudio, 1);
     }
 
-    public void addRight()
+    public override void addRight()
     {
         right++;
         if (right >= pontos)
@@ -58,7 +60,7 @@ public class GameController : MonoBehaviour
         }
         Debug.Log(" right" + right);
     }
-    public void addError()
+    public override void addError()
     {
         error++;
         audioController.playFx(audioController.fxError, 1);
@@ -92,21 +94,13 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene("Fase_"+ proximaFase);
     }
 
-    public void resizeColiderMax(BoxCollider2D bc2d, SpriteRenderer spriteRenderer)
-    {
-        bc2d.size = new Vector2(2f, 3f);
-        spriteRenderer.sortingOrder = 5;
-    }
+    
     public void resizeColiderMaxPalavra(BoxCollider2D bc2d, SpriteRenderer spriteRenderer, float x, float y)
     {
         bc2d.size = new Vector2(x, y);
         spriteRenderer.sortingOrder = 5;
     }
-    public void resizeColiderMin(BoxCollider2D bc2d)
-    {
-        bc2d.size = new Vector2(0.00001f, 0.00001f);
-    }
-
+    
     /*
     public void initList()
     {
@@ -135,4 +129,10 @@ public class GameController : MonoBehaviour
         audioController.playFx(audioController.fxVictory, 1);
 
     }
+
+    public override AudioClip GetAudioSelecionado()
+    {
+        throw new System.NotImplementedException();
+    }
+
 }

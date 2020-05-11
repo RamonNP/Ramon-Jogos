@@ -7,6 +7,7 @@ using Random = System.Random;
 
 public class GameControllerDinamicoCores : GameControllerBase
 {
+    public override int lockKK { get => lockKK; set => lockKK = value; }
     private float x1;
     private float x2;
     private float x3;
