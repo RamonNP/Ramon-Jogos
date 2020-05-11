@@ -1719,10 +1719,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   palavras:
   - ABELHA
+  - BALEIA
   - CAVALO
   - DRAGAO
-  - GALO
   - FOCA
+  - GALO
   - GIRAFA
   - HIENA
   - IGUANA
@@ -1733,36 +1734,35 @@ MonoBehaviour:
   - OVELHA
   - POLVO
   - QUATI
-  - URSO
-  - VACA
-  - ZEBRA
-  - BALEIA
   - RATO
   - SAPO
   - TIGRE
+  - URSO
+  - VACA
+  - ZEBRA
   audioItem:
-  - {fileID: 8300000, guid: 995ddbe6f145f6541a2b47846e7a81b6, type: 3}
-  - {fileID: 8300000, guid: 30eb1b64a79c3224e9d07a08a74c8c22, type: 3}
-  - {fileID: 8300000, guid: 9125681ce34dbbf4a889538e24b2917e, type: 3}
-  - {fileID: 8300000, guid: e17bc54baa616fb4882b0c24258f565e, type: 3}
-  - {fileID: 8300000, guid: 54d9ad31ff88f9b429f6e99d56be31e5, type: 3}
-  - {fileID: 8300000, guid: ba604e08a9c4c6044b337d9eb8ce3f30, type: 3}
-  - {fileID: 8300000, guid: 8b724637cc472834992a5f3bbc173e77, type: 3}
-  - {fileID: 8300000, guid: de3b8156b96e8bc46bf9ba5389069820, type: 3}
-  - {fileID: 8300000, guid: 62d55cb7a2901ed44adb2f0326020ebc, type: 3}
-  - {fileID: 8300000, guid: 13a811a19a40392429ecb27197a00efd, type: 3}
-  - {fileID: 8300000, guid: 2507d42d81dfe4244844d75967c824e0, type: 3}
-  - {fileID: 8300000, guid: 7ca9f48bc0f549340af6f1039af3f852, type: 3}
-  - {fileID: 8300000, guid: 2bdad1eec29cdef4cbaa1ba7833e91d0, type: 3}
-  - {fileID: 8300000, guid: 79461a2916d4aab4e8872b0ae50d4cbc, type: 3}
-  - {fileID: 8300000, guid: 24e9dad83b33d34478d2d2b40f8c25a1, type: 3}
-  - {fileID: 8300000, guid: 2bb6ae22d896a4f45b4d5071b4ae042a, type: 3}
-  - {fileID: 8300000, guid: a9f9e5d1a7d2cd54bb27dcc5e38bda29, type: 3}
-  - {fileID: 8300000, guid: cb46facc217c5634fa37324fa5ca8cba, type: 3}
-  - {fileID: 8300000, guid: c16089a276f90a84a8689eee7241d685, type: 3}
-  - {fileID: 8300000, guid: bdf28af680eb68f448caa26730a04ff8, type: 3}
-  - {fileID: 8300000, guid: 095e2b8ff8c2fbf4d9c7e4408441be69, type: 3}
-  - {fileID: 8300000, guid: 38adb368ed742524ab0dd00168be1c7a, type: 3}
+  - {fileID: 8300000, guid: f838cb5414e78d0478507f7cbb88229e, type: 3}
+  - {fileID: 8300000, guid: ee0f6c8c145388f4bbaddfd9acac2745, type: 3}
+  - {fileID: 8300000, guid: 992e633e384933240b0d5fcf72fd13aa, type: 3}
+  - {fileID: 8300000, guid: 0c0f4121fbdc1e843bbbb148a2c4bf85, type: 3}
+  - {fileID: 8300000, guid: eaefde515ed74be4ab2a44b5a48ebbb7, type: 3}
+  - {fileID: 8300000, guid: edb1e52596c36a749bf9240e0534aeea, type: 3}
+  - {fileID: 8300000, guid: bee12b795e99cde4d84c0f1bbcf2b687, type: 3}
+  - {fileID: 8300000, guid: 7e40c3b589e40674998817640b20d069, type: 3}
+  - {fileID: 8300000, guid: 34ca24805a4dfc947b593b287e840078, type: 3}
+  - {fileID: 8300000, guid: 755c7ec709e4f9744ba279599024f209, type: 3}
+  - {fileID: 8300000, guid: bfa87c27968f633498b8b10edfb2ce04, type: 3}
+  - {fileID: 8300000, guid: 10f1f0ccf49551143b0d81b12ad9417a, type: 3}
+  - {fileID: 8300000, guid: 37db876e77de8294a8ac746b0d6bfc1f, type: 3}
+  - {fileID: 8300000, guid: 4fca484cb0b067547bbaad9f60805051, type: 3}
+  - {fileID: 8300000, guid: a6f229f1d6c8f0b43bc0f1c0a128ffa3, type: 3}
+  - {fileID: 8300000, guid: 26470013f67c9104c8ee30efe9b74d76, type: 3}
+  - {fileID: 8300000, guid: c53a2970cc0f9c64c947ec7a07c6bdbf, type: 3}
+  - {fileID: 8300000, guid: 0e2daf84e3f9de94fb51f90e5bc059fa, type: 3}
+  - {fileID: 8300000, guid: b7669d58e97e74141b859d9d616b4551, type: 3}
+  - {fileID: 8300000, guid: 02a8067c424f6544498315bc3d9585fe, type: 3}
+  - {fileID: 8300000, guid: bbf5c399bcffc314982187c8fb6ff60e, type: 3}
+  - {fileID: 8300000, guid: ccd1fc22da06ed24b9a3f0bfac4a09c7, type: 3}
   letraA: {fileID: 2174534930924726076, guid: 6ae8c98c52fa2474eb8ddf17d0e02476, type: 3}
   letraB: {fileID: 6581204048378886600, guid: 6ae8c98c52fa2474eb8ddf17d0e02476, type: 3}
   letraC: {fileID: 2818046334708425133, guid: 6ae8c98c52fa2474eb8ddf17d0e02476, type: 3}
