@@ -73,6 +73,7 @@ public class GameControllerDinamicoObjetos : GameControllerBase
     private float x1;
     private float x2;
     private float x3;
+    public override int lockKK { get => lockKK; set => lockKK = value; }
     void Start()
     {
         posicaoAleatoria(new Random().Next(0, 3));

@@ -7,10 +7,17 @@ using Random = System.Random;
 
 public class GCEscreverDinamicoObjetos : GameControllerBase
 {
+    public bool proximaFaseLetras;
+    public Transform place1;
+    public Transform place2;
+    public Transform place3;
+    public Transform place4;
+    public Transform place5;
+    public Transform place6;
     public string[] palavras = new String[3];
     public AudioClip[] audioItem= new AudioClip[3];
     private bool travaError = false;
-
+    public override int lockKK { get; set; }
     public Sprite letraA;
     public Sprite letraB;
     public Sprite letraC;
@@ -73,57 +80,49 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
     private float x1;
     private float x2;
     private float x3;
+
+    public MODinamicoEscrever m1;
+    public MODinamicoEscrever m2;
+    public MODinamicoEscrever m3;
+    public MODinamicoEscrever m4;
+    public MODinamicoEscrever m5;
+    public MODinamicoEscrever m6;
+
     void Start()
     {
-        posicaoAleatoria(new Random().Next(0, 3));
+        //Debug.Log("STATICCCCCCCC" + faseAtual);
+        //posicaoAleatoria(new Random().Next(0, 3));
         audioController = FindObjectOfType(typeof(AudioController)) as AudioController;
         audioController.fxFrase = audioItem[faseAtual];
         palavra = palavras[faseAtual];
         tamanhoPalavra();
         montarPalavra();
-        montarObjeto();
+        obj3.GetComponent<SpriteRenderer>().sprite = spriteItem[faseAtual];
     }
-    public void posicaoAleatoria(int posicaoAnimais)
-    {
-        if (posicaoAnimais == 0)
-        {
-            x1 = 0;
-            x2 = 4;
-            x3 = -4;
-        }
-        else if (posicaoAnimais == 1)
-        {
-            x1 = 4;
-            x2 = -4;
-            x3 = 0;
-        }
-        else if (posicaoAnimais == 2)
-        {
-            x1 = -4;
-            x2 = 0;
-            x3 = 4;
-        }
-
-        obj1.transform.position = new Vector2(x3, -2.45f);
-        obj2.transform.position = new Vector2(x2, -2.45f);
-        obj3.transform.position = new Vector2(x1, -2.45f);
-    }
+   
     // Update is called once per frame
     void Update()
     {
     }
-
+    public void reiniciarPosicao()
+    {
+        ok2.transform.position = new Vector2(place2.position.x, place2.position.y);
+    }
     public void playPalavra()
     {audioController.playPalavra();
 }
     public void proximaFase()
     {
+        SceneManager.LoadScene("Escrever_dinamico_Objeto");
+
+        //reiniciarPosicao();
         travaError = true;
-        posicaoAleatoria(new Random().Next(0, 3));
+        //posicaoAleatoria(new Random().Next(0, 3));
         posicao = 1;
         faseAtual++;
         faseAtual = faseAtual % palavras.Length;
         palavra = palavras[faseAtual];
+        voltarIncialPalavras();
         //Debug.Log(palavra);
         reiniciarParametros();
         audioController.fxFrase = audioItem[faseAtual];
@@ -131,7 +130,7 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
         montarPalavra();
         playPalavra();
         hudGameOver.SetActive(false);
-        montarObjeto();
+        obj3.GetComponent<SpriteRenderer>().sprite = spriteItem[faseAtual];
         StartCoroutine("waith");
     }
     IEnumerator waith()
@@ -174,10 +173,12 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
                 fundo1.SetActive(false);
                 ok6.SetActive(false);
                 fundo6.SetActive(false);
+                mudarDestino(4);
                 break;
             case 5:
                 ok6.SetActive(false);
                 fundo6.SetActive(false);
+                mudarDestino(5);
                 break;
             case 6:
                 break;
@@ -191,153 +192,221 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
         }
     }
 
-    public GameObject getOk()
+    private void mudarDestino(int script)
+    {
+        if(script == 4)
+        {
+            m2.xDest = -1.17f;
+            m3.xDest = -3.18f;
+            m4.xDest = 3.12f;
+            m5.xDest = 1.02f;
+        } else if(script == 5)
+        {
+            m1.xDest = -3.18f;
+            m2.xDest = -1.18f;
+            m3.xDest = -5.18f;
+            m4.xDest = 2.80f;
+            m5.xDest = 0.80f;
+        }
+    }
+
+    public GameObject getOk(char c)
     {
         if(posicao == 1)
         {
+            ok1.GetComponentInChildren<MODinamicoEscrever>().place = place1;
             posicao++;
+            c1 = c;
             return ok1;
         } else if(posicao == 2) {
+            ok2.GetComponentInChildren<MODinamicoEscrever>().place = place2;
             posicao++;
+            c2 = c;
             return ok2;
         } else if(posicao == 3) {
+            ok3.GetComponentInChildren<MODinamicoEscrever>().place = place3;
             posicao++;
+            c3 = c;
             return ok3;
         } else if(posicao == 4) {
+            ok4.GetComponentInChildren<MODinamicoEscrever>().place = place4;
             posicao++;
+            c4 = c;
             return ok4;
         } else if(posicao == 5) {
+            ok5.GetComponentInChildren<MODinamicoEscrever>().place = place5;
             posicao++;
+            c5 = c;
             return ok5;
         } else if(posicao == 6) {
+            c6 = c;
+            ok6.GetComponentInChildren<MODinamicoEscrever>().place = place6;
             posicao++;
             return ok6;
         }
         return null;
 
     }
-    private void montarObjeto()
+    char c1;
+    char c2;
+    char c3;
+    char c4;
+    char c5;
+    char c6;
+
+    private void repeteCaracter(char c, GameObject ok)
     {
-
-        obj3.GetComponent<SpriteRenderer>().sprite = spriteItem[faseAtual];
-        obj2.GetComponent<SpriteRenderer>().sprite = PopularSprite();
-        obj1.GetComponent<SpriteRenderer>().sprite = PopularSprite();
-
-    }
-
-    int animalSpriteAnt;
-    public Sprite PopularSprite()
-    {
-        Sprite s1;
-        int animalSprite = new Random().Next(0, spriteItem.Length);
-        while (animalSprite == animalSpriteAnt || animalSprite == (faseAtual))
+        if (c1.Equals(c))
         {
-            animalSprite = new Random().Next(0, spriteItem.Length);
-        }
-
-        //Debug.Log(animalSprite);
-        s1 = spriteItem[animalSprite];
-        
-        animalSpriteAnt = animalSprite;
-        return s1;
+            ok1.GetComponentInChildren<MODinamicoEscrever>().place2 = ok.GetComponentInChildren<MODinamicoEscrever>().place;
+            ok.GetComponentInChildren<MODinamicoEscrever>().place2 = ok1.GetComponentInChildren<MODinamicoEscrever>().place;
+        } else if(c2.Equals(c))
+        {
+            ok2.GetComponentInChildren<MODinamicoEscrever>().place2 = ok.GetComponentInChildren<MODinamicoEscrever>().place;
+            ok.GetComponentInChildren<MODinamicoEscrever>().place2 = ok2.GetComponentInChildren<MODinamicoEscrever>().place;
+        } else if(c3.Equals(c))
+        {
+            ok3.GetComponentInChildren<MODinamicoEscrever>().place2 = ok.GetComponentInChildren<MODinamicoEscrever>().place;
+            ok.GetComponentInChildren<MODinamicoEscrever>().place2 = ok3.GetComponentInChildren<MODinamicoEscrever>().place;
+        } else if(c4.Equals(c))
+        {
+            ok4.GetComponentInChildren<MODinamicoEscrever>().place2 = ok.GetComponentInChildren<MODinamicoEscrever>().place;
+            ok.GetComponentInChildren<MODinamicoEscrever>().place2 = ok4.GetComponentInChildren<MODinamicoEscrever>().place;
+        } else if(c5.Equals(c))
+        {
+            ok5.GetComponentInChildren<MODinamicoEscrever>().place2 = ok.GetComponentInChildren<MODinamicoEscrever>().place;
+            ok.GetComponentInChildren<MODinamicoEscrever>().place2 = ok5.GetComponentInChildren<MODinamicoEscrever>().place;
+        } else if(c6.Equals(c))
+        {
+            ok6.GetComponentInChildren<MODinamicoEscrever>().place2 = ok.GetComponentInChildren<MODinamicoEscrever>().place;
+            ok.GetComponentInChildren<MODinamicoEscrever>().place2 = ok6.GetComponentInChildren<MODinamicoEscrever>().place;
+        } 
     }
-
-
-
     private void montarPalavra()
     {
+        GameObject ok = null;
         foreach (char c in palavra)
         {
             switch (c)
 
             {
                 case 'A':
-                    getOk().GetComponent<SpriteRenderer>().sprite = letraA;
+                    ok = getOk(c);
+                    ok.GetComponent<SpriteRenderer>().sprite = letraA;
                     break;
                 case 'B':
-                    //Debug.Log(letraB);
-
-                    getOk().GetComponent<SpriteRenderer>().sprite = letraB;
+                    ok = getOk(c);
+                    ok.GetComponent<SpriteRenderer>().sprite = letraB;
                     break;
                 case 'C':
-                    getOk().GetComponent<SpriteRenderer>().sprite = letraC;
+                    ok = getOk(c);
+                    ok.GetComponent<SpriteRenderer>().sprite = letraC;
                     break;
                 case 'D':
-                    getOk().GetComponent<SpriteRenderer>().sprite = letraD;
+                    ok = getOk(c);
+                    ok.GetComponent<SpriteRenderer>().sprite = letraD;
                     break;
                 case 'E':
-                    getOk().GetComponent<SpriteRenderer>().sprite = letraE;
+                    ok = getOk(c);
+                    ok.GetComponent<SpriteRenderer>().sprite = letraE;
                     break;
                 case 'F':
-                    getOk().GetComponent<SpriteRenderer>().sprite = letraF;
+                    ok = getOk(c);
+                    ok.GetComponent<SpriteRenderer>().sprite = letraF;
                     break;
                 case 'G':
-                    getOk().GetComponent<SpriteRenderer>().sprite = letraG;
+                    ok = getOk(c);
+                    ok.GetComponent<SpriteRenderer>().sprite = letraG;
                     break;
                 case 'H':
-                    getOk().GetComponent<SpriteRenderer>().sprite = letraH;
+                    ok = getOk(c);
+                    ok.GetComponent<SpriteRenderer>().sprite = letraH;
                     break;
                 case 'I':
-                    getOk().GetComponent<SpriteRenderer>().sprite = letraI;
+                    ok = getOk(c);
+                    ok.GetComponent<SpriteRenderer>().sprite = letraI;
                     break;
                 case 'J':
-                    getOk().GetComponent<SpriteRenderer>().sprite = letraJ;
+                    ok = getOk(c);
+                    ok.GetComponent<SpriteRenderer>().sprite = letraJ;
                     break;
                 case 'K':
-                    getOk().GetComponent<SpriteRenderer>().sprite = letraK;
+                    ok = getOk(c);
+                    ok.GetComponent<SpriteRenderer>().sprite = letraK;
                     break;
                 case 'L':
-                    getOk().GetComponent<SpriteRenderer>().sprite = letraL;
+                    ok = getOk(c);
+                    ok.GetComponent<SpriteRenderer>().sprite = letraL;
                     break;
                 case 'M':
-                    getOk().GetComponent<SpriteRenderer>().sprite = letraM;
+                    ok = getOk(c);
+                    ok.GetComponent<SpriteRenderer>().sprite = letraM;
                     break;
                 case 'N':
-                    getOk().GetComponent<SpriteRenderer>().sprite = letraN;
+                    ok = getOk(c);
+                    ok.GetComponent<SpriteRenderer>().sprite = letraN;
                     break;
                 case 'O':
-                    getOk().GetComponent<SpriteRenderer>().sprite = letraO;
+                    ok = getOk(c);
+                    ok.GetComponent<SpriteRenderer>().sprite = letraO;
                     break;
                 case 'P':
-                    getOk().GetComponent<SpriteRenderer>().sprite = letraP;
+                    ok = getOk(c);
+                    ok.GetComponent<SpriteRenderer>().sprite = letraP;
                     break;
                 case 'Q':
-                    getOk().GetComponent<SpriteRenderer>().sprite = letraQ;
+                    ok = getOk(c);
+                    ok.GetComponent<SpriteRenderer>().sprite = letraQ;
                     break;
                 case 'R':
-                    getOk().GetComponent<SpriteRenderer>().sprite = letraR;
+                    ok = getOk(c);
+                    ok.GetComponent<SpriteRenderer>().sprite = letraR;
                     break;
                 case 'S':
-                    getOk().GetComponent<SpriteRenderer>().sprite = letraS;
+                    ok = getOk(c);
+                    ok.GetComponent<SpriteRenderer>().sprite = letraS;
                     break;
                 case 'T':
-                    getOk().GetComponent<SpriteRenderer>().sprite = letraT;
+                    ok = getOk(c);
+                    ok.GetComponent<SpriteRenderer>().sprite = letraT;
                     break;
                 case 'U':
-                    getOk().GetComponent<SpriteRenderer>().sprite = letraU;
+                    ok = getOk(c);
+                    ok.GetComponent<SpriteRenderer>().sprite = letraU;
                     break;
                 case 'V':
-                    getOk().GetComponent<SpriteRenderer>().sprite = letraV;
+                    ok = getOk(c);
+                    ok.GetComponent<SpriteRenderer>().sprite = letraV;
                     break;
                 case 'X':
-                    getOk().GetComponent<SpriteRenderer>().sprite = letraX;
+                    ok = getOk(c);
+                    ok.GetComponent<SpriteRenderer>().sprite = letraX;
                     break;
                 case 'Y':
-                    getOk().GetComponent<SpriteRenderer>().sprite = letraY;
+                    ok = getOk(c);
+                    ok.GetComponent<SpriteRenderer>().sprite = letraY;
                     break;
                 case 'Z':
-                    getOk().GetComponent<SpriteRenderer>().sprite = letraZ;
+                    ok = getOk(c);
+                    ok.GetComponent<SpriteRenderer>().sprite = letraZ;
                     break;
                 default:
                     //Console.WriteLine("Default case");
                     break;
             }
+            repeteCaracter(c, ok);
         }
     }
     public override void addRight()
     {
         right++;
-        if (right >= pontos)
+        //Debug.Log(right+ "-" +palavra.Length + " palavra 1"+ palavra+"1");
+        if (proximaFaseLetras)
+        {
+            right = 0;
+            return;
+        }
+        if (right >= palavra.Length)
         {
             victory();
 
@@ -378,6 +447,28 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
     public override AudioClip GetAudioSelecionado()
     {
         throw new NotImplementedException();
+    }
+    private void voltarIncialPalavras()
+    {
+        ok1.transform.position = place1.transform.position;
+        ok2.transform.position = place2.transform.position;
+        ok3.transform.position = place3.transform.position;
+        ok4.transform.position = place4.transform.position;
+        ok5.transform.position = place5.transform.position;
+        ok6.transform.position = place6.transform.position;
+
+        ok1.SetActive(false);
+        ok2.SetActive(false);
+        ok3.SetActive(false);
+        ok4.SetActive(false);
+        ok5.SetActive(false);
+        ok6.SetActive(false);
+
+        ok1.SetActive(true);
+        ok2.SetActive(true);
+        ok3.SetActive(true);
+        ok4.SetActive(true);
+
     }
 
 }

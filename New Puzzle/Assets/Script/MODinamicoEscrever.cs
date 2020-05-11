@@ -2,22 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveObject4 : MonoBehaviour
+public class MODinamicoEscrever : MonoBehaviour
 {
     public AudioClip fxLetra;
     [SerializeField]
-    private Transform place;
+    public Transform place;
     [SerializeField]
-    private Transform place2;
+    public Transform place2;
     private Vector2 initialPosition;
 
-    private GameControllerBase gameController;
+    private GCEscreverDinamicoObjetos gameController;
     private float deltaX, deltaY;
 
     public bool locked;
-    public bool dinamico;
     private IEnumerator coroutine;
-
+    public int objOk;
     //efeito quando arrasta pega aumenta.
     float x;
     float y;
@@ -28,13 +27,8 @@ public class MoveObject4 : MonoBehaviour
 
     void Start()
     {
-        if (dinamico)
-        {
-            gameController = FindObjectOfType(typeof(GCEscreverDinamicoObjetos)) as GCEscreverDinamicoObjetos;
-        } else
-        {
-            gameController = FindObjectOfType(typeof(GameController)) as GameController;
-        }
+
+        gameController = FindObjectOfType(typeof(GCEscreverDinamicoObjetos)) as GCEscreverDinamicoObjetos;
         initialPosition = transform.position;
         z = 1;
         locked = true;
@@ -43,6 +37,17 @@ public class MoveObject4 : MonoBehaviour
 
     }
 
+    private void Reset()
+    {
+        
+    }
+    private void OnEnable()
+    {
+        //initialPosition = transform.position;
+        //z = 1;
+        //locked = true;
+        //moveInitial();
+    }
 
     void Update()
     {
@@ -53,7 +58,8 @@ public class MoveObject4 : MonoBehaviour
             if (transform.position.x != initialPosition.x && initialPosition.y != transform.position.y)
             {
                 transform.localScale = new Vector3(xN, yN, z);
-            } else
+            }
+            else
             {
                 transform.localScale = new Vector3(x, y, z);
             }
@@ -76,14 +82,17 @@ public class MoveObject4 : MonoBehaviour
 
                     if (GetComponent<Collider2D>() == Physics2D.OverlapPoint(touchPos))
                     {
+                        //Debug.Log("gameController.lockKK " + gameController.lockKK + " OBJ " + objOk);
                         if (gameController.lockKK == 0)
                         {
-                            gameController.lockKK = 4;
-                        } else if (gameController.lockKK == 4)
+                            gameController.lockKK = objOk;
+                        }
+                        else if (gameController.lockKK == objOk)
                         {
                             transform.position = new Vector3(touchPos.x - deltaX, touchPos.y - deltaY, z);
                             this.GetComponent<SpriteRenderer>().sortingOrder = 7;
-                        } else
+                        }
+                        else
                         {
                             gameController.resizeColiderMin(this.GetComponent<BoxCollider2D>());
                         }
@@ -91,7 +100,8 @@ public class MoveObject4 : MonoBehaviour
                     break;
 
                 case TouchPhase.Ended:
-                    if (place!= null && place.tag != "ok" &&  (Mathf.Abs(transform.position.x - place.position.x) <= 1.0f &&
+                    //Debug.Log("gameController.lockKK " + gameController.lockKK + " OBJ " + objOk);
+                    if (place != null && place.tag != "ok" && (Mathf.Abs(transform.position.x - place.position.x) <= 1.0f &&
                        Mathf.Abs(transform.position.y - place.position.y) <= 1.0f))
                     {
                         transform.position = new Vector3(place.position.x, place.position.y, z);
@@ -101,8 +111,10 @@ public class MoveObject4 : MonoBehaviour
                         gameController.playFx(fxLetra);
                         place.tag = "ok";
                         place = null;
-                    } else if (place2 != null && place2.tag != "ok" && (Mathf.Abs(transform.position.x - place2.position.x) <= 1.0f &&
-                       Mathf.Abs(transform.position.y - place2.position.y) <= 1.0f))
+                        gameController.lockKK = 0;
+                    }
+                    else if (place2 != null && place2.tag != "ok" && (Mathf.Abs(transform.position.x - place2.position.x) <= 1.0f &&
+                     Mathf.Abs(transform.position.y - place2.position.y) <= 1.0f))
                     {
                         transform.position = new Vector3(place2.position.x, place2.position.y, z);
                         locked = true;
@@ -111,17 +123,21 @@ public class MoveObject4 : MonoBehaviour
                         gameController.playFx(fxLetra);
                         place2.tag = "ok";
                         place2 = null;
+                        gameController.lockKK = 0;
                     }
                     else
                     {
-                        if(initialPosition.x != transform.position.x)
+                        //Debug.Log("gameController.lockKK " + gameController.lockKK + " OBJ " + objOk);
+                        if(gameController.lockKK == objOk)
                         {
-                        transform.position = new Vector3(initialPosition.x, initialPosition.y, z);
-                            
-                            gameController.addError();
+                            if (initialPosition.x != transform.position.x)
+                            {
+                                transform.position = new Vector3(initialPosition.x, initialPosition.y, z);
+                                gameController.addError();
+                            }
+                            gameController.lockKK = 0;
                         }
                     }
-                    gameController.lockKK = 0;
                     gameController.resizeColiderMax(this.GetComponent<BoxCollider2D>(), this.GetComponent<SpriteRenderer>());
                     break;
 
@@ -160,7 +176,7 @@ public class MoveObject4 : MonoBehaviour
 
         //xDest = -2.5f;
         yDest = -2f;
-        
+
         coroutine = waithMoveEnum();
         StartCoroutine("waithMoveEnum");
     }
@@ -172,12 +188,12 @@ public class MoveObject4 : MonoBehaviour
         float yInit = transform.position.y;
         float xcurrent = transform.position.x;
         float ycurrent = transform.position.y;
-        
+
 
         yield return new WaitForSecondsRealtime(1.5f);
         if (ycurrent > yDest)
         {
-           
+
             while (ycurrent >= yDest)
             {
                 ycurrent = ycurrent - 0.1f;
@@ -187,7 +203,7 @@ public class MoveObject4 : MonoBehaviour
         }
         else if (ycurrent < yDest)
         {
-           
+
             while (ycurrent <= yDest)
             {
                 ycurrent = ycurrent + 0.1f;
@@ -227,6 +243,7 @@ public class MoveObject4 : MonoBehaviour
         xN = x * 1.3f;
         yN = y * 1.3f;
         locked = false;
+        gameController.proximaFaseLetras = false;
     }
     //FIM EMBARALHAR
 }

@@ -7,6 +7,7 @@ using Random = System.Random;
 
 public class GameControllerDinamicoAnimais : GameControllerBase
 {
+
     private float x1;
     private float x2;
     private float x3;
@@ -99,6 +100,7 @@ public class GameControllerDinamicoAnimais : GameControllerBase
     public int error;
     public int pontos;
     public GameObject hudGameOver;
+    public override int lockKK { get { return lockKK; } set => lockKK = value; }
     void Start()
     {
         posicaoAleatoria(new Random().Next(0, 3));

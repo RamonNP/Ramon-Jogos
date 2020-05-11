@@ -11,7 +11,7 @@ public class MoveObject2 : MonoBehaviour
     private Transform place2;
     private Vector2 initialPosition;
 
-    private GameController gameController;
+    private GameControllerBase gameController;
     private float deltaX, deltaY;
 
     public bool locked;
