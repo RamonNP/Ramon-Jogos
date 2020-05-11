@@ -113,7 +113,7 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
 }
     public void proximaFase()
     {
-        SceneManager.LoadScene("Escrever_dinamico_Objeto");
+        SceneManager.LoadScene("Escrever_dinamico_Objetos");
 
         //reiniciarPosicao();
         travaError = true;
