@@ -7,7 +7,8 @@ using Random = System.Random;
 
 public class GCEscreverDinamicoObjetos : GameControllerBase
 {
-    public bool proximaFaseLetras;
+    public String cena;
+    //public bool proximaFaseLetras;
     public Transform place1;
     public Transform place2;
     public Transform place3;
@@ -113,7 +114,7 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
 }
     public void proximaFase()
     {
-        SceneManager.LoadScene("Escrever_dinamico_Objetos");
+        SceneManager.LoadScene(cena);
 
         //reiniciarPosicao();
         travaError = true;
@@ -122,7 +123,7 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
         faseAtual++;
         faseAtual = faseAtual % palavras.Length;
         palavra = palavras[faseAtual];
-        voltarIncialPalavras();
+        //voltarIncialPalavras();
         //Debug.Log(palavra);
         reiniciarParametros();
         audioController.fxFrase = audioItem[faseAtual];
@@ -167,6 +168,16 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
         switch (qtd)
 
         {
+            case 3:
+                posicao = 3;
+                ok1.SetActive(false);
+                fundo1.SetActive(false);
+                ok2.SetActive(false);
+                fundo2.SetActive(false);
+                ok6.SetActive(false);
+                fundo6.SetActive(false);
+                mudarDestino(3);
+                break;
             case 4:
                 posicao = 2;
                 ok1.SetActive(false);
@@ -181,6 +192,7 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
                 mudarDestino(5);
                 break;
             case 6:
+                mudarDestino(6);
                 break;
             case 7:
                 break;
@@ -194,13 +206,21 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
 
     private void mudarDestino(int script)
     {
-        if(script == 4)
+        if (script == 4)
         {
             m2.xDest = -1.17f;
             m3.xDest = -3.18f;
             m4.xDest = 3.12f;
             m5.xDest = 1.02f;
-        } else if(script == 5)
+        }
+        else if (script == 3)
+        {
+            m4.xDest = -1.17f;
+            //m3.xDest = -3.18f;
+            m3.xDest = 3.12f;
+            m5.xDest = 1.02f;
+        }
+        else if (script == 5)
         {
             m1.xDest = -3.18f;
             m2.xDest = -1.18f;
@@ -208,10 +228,20 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
             m4.xDest = 2.80f;
             m5.xDest = 0.80f;
         }
+        else if (script == 6)
+        {
+            m1.xDest = -3.18f;
+            m2.xDest = 4.5f;
+            m3.xDest = -5.18f;
+            m4.xDest = 2.80f;
+            m5.xDest = 0.80f;
+            m6.xDest = -1.18f;
+        }
     }
 
     public GameObject getOk(char c)
     {
+        //Debug.Log(posicao);
         if(posicao == 1)
         {
             ok1.GetComponentInChildren<MODinamicoEscrever>().place = place1;
@@ -287,10 +317,12 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
         GameObject ok = null;
         foreach (char c in palavra)
         {
+                
             switch (c)
 
             {
                 case 'A':
+                    //Debug.Log(c);
                     ok = getOk(c);
                     ok.GetComponent<SpriteRenderer>().sprite = letraA;
                     break;
@@ -371,12 +403,18 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
                     ok.GetComponent<SpriteRenderer>().sprite = letraT;
                     break;
                 case 'U':
+                    //Debug.Log(c);
                     ok = getOk(c);
                     ok.GetComponent<SpriteRenderer>().sprite = letraU;
                     break;
                 case 'V':
+                    //Debug.Log(c);
                     ok = getOk(c);
                     ok.GetComponent<SpriteRenderer>().sprite = letraV;
+                    break;
+                case 'W':
+                    ok = getOk(c);
+                    ok.GetComponent<SpriteRenderer>().sprite = letraW;
                     break;
                 case 'X':
                     ok = getOk(c);
@@ -400,14 +438,15 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
     public override void addRight()
     {
         right++;
-        //Debug.Log(right+ "-" +palavra.Length + " palavra 1"+ palavra+"1");
+        /*Debug.Log(right+ "-" +palavra.Length + " palavra 1"+ palavra+"1");
         if (proximaFaseLetras)
         {
             right = 0;
             return;
-        }
+        } */
         if (right >= palavra.Length)
         {
+            audioController.playFx(audioController.fxClick, 1);
             victory();
 
             coroutine = playVictoryEnum();
@@ -415,7 +454,7 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
         }
         else
         {
-            // audioController.playFx(audioController.fx, 1);
+            audioController.playFx(audioController.fxClick, 1);
         }
         //Debug.Log(" right" + right);
     }
@@ -448,27 +487,6 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
     {
         throw new NotImplementedException();
     }
-    private void voltarIncialPalavras()
-    {
-        ok1.transform.position = place1.transform.position;
-        ok2.transform.position = place2.transform.position;
-        ok3.transform.position = place3.transform.position;
-        ok4.transform.position = place4.transform.position;
-        ok5.transform.position = place5.transform.position;
-        ok6.transform.position = place6.transform.position;
-
-        ok1.SetActive(false);
-        ok2.SetActive(false);
-        ok3.SetActive(false);
-        ok4.SetActive(false);
-        ok5.SetActive(false);
-        ok6.SetActive(false);
-
-        ok1.SetActive(true);
-        ok2.SetActive(true);
-        ok3.SetActive(true);
-        ok4.SetActive(true);
-
-    }
+   
 
 }

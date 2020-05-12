@@ -73,6 +73,7 @@ public class MenuFaseSelect : MonoBehaviour
 
                 animalEscrever.SetActive(true);
                 abjetosEscrever.SetActive(true);
+                outrosEscrever.SetActive(true);
             }
             /*animalEscrever.SetActive(!cat.Equals(CATEGORIA.DINAMICO));
             abjetosEscrever.SetActive(!cat.Equals(CATEGORIA.DINAMICO));
@@ -205,9 +206,9 @@ public class MenuFaseSelect : MonoBehaviour
         }
         audioController.changeMusic(audioController.musicFase1, "Menu2", true, slider);
     }
-    public void setTipo(String tipo)
+    public void setTipo(String fase)
     {
-        //TIPO { ANIMAIS = 0, OBJETOS = 100, FRUTAS = 200, OUTROS = 8 };
+        /*TIPO { ANIMAIS = 0, OBJETOS = 100, FRUTAS = 200, OUTROS = 8 };
         if (tipo.Equals("ANIMAIS"))
         {
             TIPO = TIPO.ANIMAIS;
@@ -225,8 +226,17 @@ public class MenuFaseSelect : MonoBehaviour
             audioController.changeMusic(audioController.musicFase1, tipo, true, slider);
         }
         int fase = (int)cat + (int)TIPO + 1;
-        //Debug.Log(fase);
-        audioController.changeMusic(audioController.musicFase1, "Fase_"+ fase, true, slider);
+        //Debug.Log(fase); */
+        if (cat.Equals(CATEGORIA.LER))
+        {
+        //Debug.Log(cat);
+            audioController.changeMusic(audioController.musicFase1, "Ler"+fase, true, slider);
+        }
+        if (cat.Equals(CATEGORIA.ESCREVER))
+        {
+        //Debug.Log(cat);
+            audioController.changeMusic(audioController.musicFase1, "Escrever" + fase, true, slider);
+        }
     }
     
 

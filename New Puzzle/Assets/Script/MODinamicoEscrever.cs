@@ -243,7 +243,7 @@ public class MODinamicoEscrever : MonoBehaviour
         xN = x * 1.3f;
         yN = y * 1.3f;
         locked = false;
-        gameController.proximaFaseLetras = false;
+        //gameController.proximaFaseLetras = false;
     }
     //FIM EMBARALHAR
 }
