@@ -169,6 +169,16 @@ public class GameControllerDinamicoObjetos : GameControllerBase
         switch (qtd)
 
         {
+            case 3:
+                posicao = 3;
+                ok1.SetActive(false);
+                fundo1.SetActive(false);
+                ok2.SetActive(false);
+                fundo2.SetActive(false);
+                ok6.SetActive(false);
+                fundo6.SetActive(false);
+                //mudarDestino(3);
+                break;
             case 4:
                 posicao = 2;
                 ok1.SetActive(false);
@@ -319,6 +329,9 @@ public class GameControllerDinamicoObjetos : GameControllerBase
                     break;
                 case 'V':
                     getOk().GetComponent<SpriteRenderer>().sprite = letraV;
+                    break;
+                case 'W':
+                    getOk().GetComponent<SpriteRenderer>().sprite = letraW;
                     break;
                 case 'X':
                     getOk().GetComponent<SpriteRenderer>().sprite = letraX;

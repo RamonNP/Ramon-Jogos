@@ -165,6 +165,7 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
     {
         int qtd = palavra.Length;
 
+                Debug.Log(palavra.Length);
         switch (qtd)
 
         {

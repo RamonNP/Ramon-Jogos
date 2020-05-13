@@ -1338,7 +1338,7 @@ MonoBehaviour:
   - Preto
   - Rocho
   - Vermelho
-  audioFase1: {fileID: 8300000, guid: c0ee614d65471bd4da473325dd60d81c, type: 3}
+  audioFase1: {fileID: 8300000, guid: 7955b6d369fb83147ac9892c7ab5e47f, type: 3}
   audioFase2: {fileID: 0}
   audioFase3: {fileID: 0}
   audioFase4: {fileID: 0}
