@@ -63,8 +63,8 @@ public class MODinamicoEscrever : MonoBehaviour
             {
                 transform.localScale = new Vector3(x, y, z);
             }
-            Touch touch = Input.GetTouch(0);//simulatess();//Input.GetTouch(0); SEM SIMULADOR
-            //Touch touch = simulatess();//Input.GetTouch(0); SEM SIMULADOR
+            //Touch touch = Input.GetTouch(0);//simulatess();//Input.GetTouch(0); SEM SIMULADOR
+            Touch touch = simulatess();//Input.GetTouch(0); SEM SIMULADOR
 
             Vector2 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
             switch (touch.phase)

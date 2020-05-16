@@ -236,7 +236,7 @@ public class GameControllerDinamicoCores : GameControllerBase
         faseAtual++;
         faseAtual = faseAtual % palavras.Length;
         palavra = palavras[faseAtual];
-        Debug.Log("faseAtual "+faseAtual + "palavra" + palavra);
+        //Debug.Log("faseAtual "+faseAtual + "palavra" + palavra);
         //reiniciarParametros();
         //escolherAudio(faseAtual);
         //tamanhoPalavra();
@@ -244,7 +244,7 @@ public class GameControllerDinamicoCores : GameControllerBase
         playPalavra();
         hudGameOver.SetActive(false);
         StartCoroutine("waith");
-
+        AdmobManager.instance.RegraInterstitial();
     }
     IEnumerator waith()
     {

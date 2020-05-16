@@ -1,5 +1,4 @@
-﻿//using GoogleMobileAds.Api;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,30 +26,12 @@ public class MenuFaseSelect : MonoBehaviour
     public GameObject coresDinamico;
     public GameObject outrosDinamico;
     public GameObject meninaDoLeite;
-    /*public GameObject fase_4;
-    public GameObject lock_4;
-    public GameObject fase_5;
-    public GameObject lock_5;
-    public GameObject fase_6;
-    public GameObject lock_6;
-    public GameObject fase_7;
-    public GameObject lock_7;
-    public GameObject fase_8;
-    public GameObject lock_8;
-    public GameObject fase_9;
-    public GameObject lock_9;
-    public GameObject fase_10;
-    public GameObject lock_10;*/
+
 
     private List<String> fases = new List<string>();
 
     void Start()
     {
-        // Initialize the Google Mobile Ads SDK.
-        //MobileAds.Initialize(initStatus => { });
-        this.RequestBanner();
-
-
         audioController = FindObjectOfType(typeof(AudioController)) as AudioController;
         if (!principal)
         {
@@ -81,13 +62,7 @@ public class MenuFaseSelect : MonoBehaviour
                 abjetosEscrever.SetActive(true);
                 outrosEscrever.SetActive(true);
             }
-            /*animalEscrever.SetActive(!cat.Equals(CATEGORIA.DINAMICO));
-            abjetosEscrever.SetActive(!cat.Equals(CATEGORIA.DINAMICO));
-            //outrosEscrever.SetActive(!cat.Equals(CATEGORIA.DINAMICO));
 
-            sonsAnimaisDinamico.SetActive(cat.Equals(CATEGORIA.DINAMICO));
-            coresDinamico.SetActive(cat.Equals(CATEGORIA.DINAMICO));
-            //outrosDinamico.SetActive(cat.Equals(CATEGORIA.DINAMICO)); */
         }
         
     }
@@ -95,64 +70,7 @@ public class MenuFaseSelect : MonoBehaviour
     {
       audioController.changeMusic(audioController.musicFase1, Scena, true, slider);
     }
-    /*
-    private void OpenLevel(string level)
-    {
-        Debug.Log(level);
-        fases.Add(level);
-        switch (level)
-        {
-            case "Fase_1":
-                animalEscrever.SetActive(true);
-                abjetosEscrever.SetActive(false);
-                break;
-           
-            case "Fase_2":
-                outrosEscrever.SetActive(true);
-                sonsAnimaisDinamico.SetActive(false);
-                break;
-            case "Fase_3":
-                coresDinamico.SetActive(true);
-                outrosDinamico.SetActive(false);
-                break;
-            case "Fase_4":
-                fase_4.SetActive(true);
-                lock_4.SetActive(false);
-                break;
-            case "Fase_5":
-                fase_5.SetActive(true);
-                lock_5.SetActive(false);
-                break;
-            case "Fase_6":
-                fase_6.SetActive(true);
-                lock_6.SetActive(false);
-                break;
-            case "Fase_7":
-                fase_7.SetActive(true);
-                lock_7.SetActive(false);
-                break;
-            case "Fase_8":
-                fase_8.SetActive(true);
-                lock_8.SetActive(false);
-                break;
-            case "Fase_9":
-                fase_9.SetActive(true);
-                lock_9.SetActive(false);
-                break;
-            case "Fase_10":
-                Debug.Log(fase_10.transform.position.x);
-                Debug.Log(fase_10.transform.position.y);
-                //fase_10.transform.position.x;
-                fase_10.SetActive(true);
-                lock_10.SetActive(false);
-                break;
-            case "Fase_11":
-                fase_4.SetActive(true);
-                lock_4.SetActive(false);
-                break;
-        }
-    }
-    */
+
     IEnumerator LoadScreen(string scena)
     {
         
@@ -214,25 +132,7 @@ public class MenuFaseSelect : MonoBehaviour
     }
     public void setTipo(String fase)
     {
-        /*TIPO { ANIMAIS = 0, OBJETOS = 100, FRUTAS = 200, OUTROS = 8 };
-        if (tipo.Equals("ANIMAIS"))
-        {
-            TIPO = TIPO.ANIMAIS;
-        } else if(tipo.Equals("OBJETOS"))
-        {
-            TIPO = TIPO.OBJETOS;
-        } else if(tipo.Equals("FRUTAS"))
-        {
-            TIPO = TIPO.FRUTAS;
-        } else if(tipo.Equals("DINAMICO"))
-        {
-            TIPO = TIPO.SONS;
-        } else
-        {
-            audioController.changeMusic(audioController.musicFase1, tipo, true, slider);
-        }
-        int fase = (int)cat + (int)TIPO + 1;
-        //Debug.Log(fase); */
+
         if (cat.Equals(CATEGORIA.LER))
         {
         //Debug.Log(cat);
@@ -244,19 +144,5 @@ public class MenuFaseSelect : MonoBehaviour
             audioController.changeMusic(audioController.musicFase1, "Escrever" + fase, true, slider);
         }
     }
-    //private BannerView bannerView;
-    private void RequestBanner()
-    {
-        #if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/6300978111";
-        #elif UNITY_IPHONE
-                    string adUnitId = "ca-app-pub-3940256099942544/2934735716";
-        #else
-                    string adUnitId = "unexpected_platform";
-        #endif
-
-        // Create a 320x50 banner at the top of the screen.
-        //this.bannerView = new BannerView(adUnitId, AdSize.Banner, AdPosition.Bottom);
-    }
-
+    
 }

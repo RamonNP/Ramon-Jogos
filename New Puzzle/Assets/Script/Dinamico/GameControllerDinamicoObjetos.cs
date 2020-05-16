@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = System.Random;
+//using GoogleMobileAds.Api;
 
 public class GameControllerDinamicoObjetos : GameControllerBase
 {
+    //private InterstitialAd interstitial;
     public string[] palavras = new String[3];
     public AudioClip[] audioItem= new AudioClip[3];
     private bool travaError = false;
@@ -76,6 +78,9 @@ public class GameControllerDinamicoObjetos : GameControllerBase
     public override int lockKK { get => lockKK; set => lockKK = value; }
     void Start()
     {
+        //Debug.Log("INICIO CARREGANDO");
+        //RequestInterstitial();
+        //Debug.Log("FIM CARREGANDO");
         posicaoAleatoria(new Random().Next(0, 3));
         audioController = FindObjectOfType(typeof(AudioController)) as AudioController;
         audioController.fxFrase = audioItem[faseAtual];
@@ -119,6 +124,7 @@ public class GameControllerDinamicoObjetos : GameControllerBase
 }
     public void proximaFase()
     {
+        
         travaError = true;
         posicaoAleatoria(new Random().Next(0, 3));
         posicao = 1;
@@ -134,6 +140,7 @@ public class GameControllerDinamicoObjetos : GameControllerBase
         hudGameOver.SetActive(false);
         montarObjeto();
         StartCoroutine("waith");
+        AdmobManager.instance.RegraInterstitial();
     }
     IEnumerator waith()
     {
@@ -393,5 +400,19 @@ public class GameControllerDinamicoObjetos : GameControllerBase
     {
         throw new NotImplementedException();
     }
-
+   //private void RequestInterstitial()
+   //{
+   //    string adUnitId = "ca-app-pub-3940256099942544/1033173712";
+   //
+   //
+   //    // Initialize an InterstitialAd.
+   //    this.interstitial = new InterstitialAd(adUnitId);
+   //}
+   //private void GameOver()
+   //{
+   //    if (this.interstitial.IsLoaded())
+   //    {
+   //        this.interstitial.Show();
+   //    }
+   //}
 }

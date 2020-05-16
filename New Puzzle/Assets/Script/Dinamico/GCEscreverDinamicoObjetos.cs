@@ -133,6 +133,7 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
         hudGameOver.SetActive(false);
         obj3.GetComponent<SpriteRenderer>().sprite = spriteItem[faseAtual];
         StartCoroutine("waith");
+        AdmobManager.instance.RegraInterstitial();
     }
     IEnumerator waith()
     {
