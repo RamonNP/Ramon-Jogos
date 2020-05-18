@@ -46,13 +46,13 @@ public class AdmobManager : MonoBehaviour
 
     public void RequestBanner()
     {
-#if UNITY_ANDROID
+        //Real
         string adUnitId = "ca-app-pub-2409485950941966/9848770671";
-#elif UNITY_IPHONE
-            string adUnitId = "ca-app-pub-3940256099942544/2934735716";
-#else
-            string adUnitId = "unexpected_platform";
-#endif
+
+        #if DEVELOPMENT_BUILD || UNITY_EDITOR
+            //adUnitId = "ca-app-pub-3940256099942544/6300978111";
+        #endif
+
 
         // Create a 320x50 banner at the top of the screen.
         bannerView = new BannerView(adUnitId, AdSize.Banner, AdPosition.Top);
@@ -74,16 +74,10 @@ public class AdmobManager : MonoBehaviour
 
     private void RequestInterstitial()
     {
-#if UNITY_ANDROID
         string adUnitId = "ca-app-pub-2409485950941966/9897776091";
-#elif UNITY_IPHONE
-        string adUnitId = "ca-app-pub-3940256099942544/4411468910";
-#else
-        string adUnitId = "unexpected_platform";
-#endif
-
-
-
+        #if DEVELOPMENT_BUILD || UNITY_EDITOR
+                //adUnitId = "ca-app-pub-3940256099942544/1033173712";
+        #endif
         // Initialize an InterstitialAd.
         this.interstitial = new InterstitialAd(adUnitId);
 
