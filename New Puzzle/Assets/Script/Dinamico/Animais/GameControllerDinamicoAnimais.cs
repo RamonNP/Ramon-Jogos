@@ -248,7 +248,7 @@ public class GameControllerDinamicoAnimais : GameControllerBase
         playPalavra();
         hudGameOver.SetActive(false);
         StartCoroutine("waith");
-
+        AdmobManager.instance.RegraInterstitial();
     }
     IEnumerator waith()
     {
