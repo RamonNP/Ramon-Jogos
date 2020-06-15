@@ -91,14 +91,14 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
 
     void Start()
     {
-        //Debug.Log("STATICCCCCCCC" + faseAtual);
-        //posicaoAleatoria(new Random().Next(0, 3));
+        AdmobManager.instance.RequestBanner();
         audioController = FindObjectOfType(typeof(AudioController)) as AudioController;
         audioController.fxFrase = audioItem[faseAtual];
         palavra = palavras[faseAtual];
         tamanhoPalavra();
         montarPalavra();
         obj3.GetComponent<SpriteRenderer>().sprite = spriteItem[faseAtual];
+        atualizarPontos(false);
     }
    
     // Update is called once per frame
@@ -110,8 +110,9 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
         ok2.transform.position = new Vector2(place2.position.x, place2.position.y);
     }
     public void playPalavra()
-    {audioController.playPalavra();
-}
+    {
+        audioController.playPalavra();
+    }
     public void proximaFase()
     {
         SceneManager.LoadScene(cena);
@@ -165,8 +166,6 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
     private void tamanhoPalavra()
     {
         int qtd = palavra.Length;
-
-                Debug.Log(palavra.Length);
         switch (qtd)
 
         {
@@ -440,17 +439,13 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
     public override void addRight()
     {
         right++;
-        /*Debug.Log(right+ "-" +palavra.Length + " palavra 1"+ palavra+"1");
-        if (proximaFaseLetras)
-        {
-            right = 0;
-            return;
-        } */
+        //gravarConquista(GooglePlayServiceConquistas.achievement_uma_linda_historia, palavra, );
         if (right >= palavra.Length)
         {
+            atualizarPontos(true);
+            atualizarConquistaPontos();
             audioController.playFx(audioController.fxClick, 1);
             victory();
-
             coroutine = playVictoryEnum();
             StartCoroutine("playVictoryEnum");
         }
@@ -458,8 +453,9 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
         {
             audioController.playFx(audioController.fxClick, 1);
         }
-        //Debug.Log(" right" + right);
+
     }
+
     public override void addError()
     {
         if(!travaError)
@@ -474,7 +470,7 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
     {
         yield return new WaitForSecondsRealtime(1f);
         audioController.playFx(audioController.fxPalavra, 1);
-        yield return new WaitForSecondsRealtime(0.5f);
+        //yield return new WaitForSecondsRealtime(0.5f);
         audioController.playFx(audioController.fxVictory, 1);
 
     }

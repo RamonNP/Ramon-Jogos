@@ -88,6 +88,8 @@ public class GameControllerDinamicoObjetos : GameControllerBase
         tamanhoPalavra();
         montarPalavra();
         montarObjeto();
+        AdmobManager.instance.RequestBanner();
+        atualizarPontos(false);
     }
     public void posicaoAleatoria(int posicaoAnimais)
     {
@@ -361,7 +363,8 @@ public class GameControllerDinamicoObjetos : GameControllerBase
         if (right >= pontos)
         {
             victory();
-
+            atualizarPontos(true);
+            atualizarConquistaPontos();
             coroutine = playVictoryEnum();
             StartCoroutine("playVictoryEnum");
         }
@@ -383,9 +386,9 @@ public class GameControllerDinamicoObjetos : GameControllerBase
 
     IEnumerator playVictoryEnum()
     {
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(0f);
         audioController.playFx(audioController.fxPalavra, 1);
-        yield return new WaitForSecondsRealtime(0.5f);
+        //yield return new WaitForSecondsRealtime(0.5f);
         audioController.playFx(audioController.fxVictory, 1);
 
     }
