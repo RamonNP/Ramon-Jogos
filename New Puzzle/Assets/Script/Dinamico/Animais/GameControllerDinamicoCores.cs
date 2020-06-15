@@ -119,6 +119,8 @@ public class GameControllerDinamicoCores : GameControllerBase
         }
         //tamanhoPalavra();
         montarPalavra();
+        atualizarPontos(false);
+        AdmobManager.instance.RequestBanner();
     }
 
     // Update is called once per frame
@@ -228,7 +230,7 @@ public class GameControllerDinamicoCores : GameControllerBase
 
     */
     }
-
+    
     public void proximaFase()
     {
         MoveObjectDinamico.locked = true;
@@ -468,7 +470,8 @@ public class GameControllerDinamicoCores : GameControllerBase
         if (right >= pontos)
         {
             victory();
-
+            atualizarPontos(true);
+            atualizarConquistaPontos();
             coroutine = playVictoryEnum();
             StartCoroutine("playVictoryEnum");
         }

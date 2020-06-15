@@ -33,6 +33,7 @@ public class AudioControllerHistorias : MonoBehaviour
 
     public void proximaCena()
     {
+        PlayServices.UnlockAnchievment(GooglePlayServiceConquistas.achievement_uma_linda_historia);
         faseAtual++;
         faseAtual = faseAtual % cenas.Length;
         cena = cenas[faseAtual];

@@ -144,5 +144,15 @@ public class MenuFaseSelect : MonoBehaviour
             audioController.changeMusic(audioController.musicFase1, "Escrever" + fase, true, slider);
         }
     }
-    
+
+    public void ShowAchievmentsUi()
+    {
+        //Debug.Log("TesteMenu");
+        PlayServices.ShowAchievments();
+    }
+
+    public void mostrarRanking()
+    {
+        PlayServices.ShowLeaderboard(GooglePlayServiceConquistas.leaderboard_ranking_principal);
+    }
 }

@@ -120,6 +120,8 @@ public class GameControllerDinamicoAnimais : GameControllerBase
         }
         //tamanhoPalavra();
         montarPalavra();
+        atualizarPontos(false);
+        AdmobManager.instance.RequestBanner();
     }
 
     // Update is called once per frame
@@ -470,7 +472,8 @@ public class GameControllerDinamicoAnimais : GameControllerBase
         if (right >= pontos)
         {
             victory();
-
+            atualizarPontos(true);
+            atualizarConquistaPontos();
             coroutine = playVictoryEnum();
             StartCoroutine("playVictoryEnum");
         }
