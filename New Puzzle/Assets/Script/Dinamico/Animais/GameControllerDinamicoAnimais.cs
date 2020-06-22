@@ -485,6 +485,7 @@ public class GameControllerDinamicoAnimais : GameControllerBase
     }
     public override void addError()
     {
+        CameraController.instance.shake();
         error++;
         audioController.playFx(audioController.fxError, 1);
     }

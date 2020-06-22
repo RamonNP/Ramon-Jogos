@@ -33,6 +33,7 @@ public class MenuFaseSelect : MonoBehaviour
     void Start()
     {
         audioController = FindObjectOfType(typeof(AudioController)) as AudioController;
+        BancoPlayerprefs.instance.GravarInformacoesInt(BancoPlayerprefs.CONST_TUTORIAL, 0);
         if (!principal)
         {
             if (cat.Equals(CATEGORIA.DINAMICO))
