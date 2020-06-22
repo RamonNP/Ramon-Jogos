@@ -49,6 +49,7 @@ public class TouchPlayDinamico : MonoBehaviour
         Vector2 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
         switch (touch.phase)
         {
+
             case TouchPhase.Began:
                 if (GetComponent<Collider2D>() == Physics2D.OverlapPoint(touchPos))
                 {

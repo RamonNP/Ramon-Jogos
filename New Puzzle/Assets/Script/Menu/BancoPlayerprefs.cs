@@ -5,10 +5,13 @@ using UnityEngine;
 
 public class BancoPlayerprefs : MonoBehaviour
 {
-    private const string CONST_PONTOS = "AB_PONTOS";
+    public const string CONST_PONTOS = "AB_PONTOS";
+    public const string CONST_TUTORIAL = "AB_TUTORIAL";
     public int intPontos;
 
     public static BancoPlayerprefs instance;
+
+    public static string CONST_TUTORIAL1 => CONST_TUTORIAL;
 
     private void Awake()
     {

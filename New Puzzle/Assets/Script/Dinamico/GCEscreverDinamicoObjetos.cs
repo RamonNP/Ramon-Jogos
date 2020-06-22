@@ -460,6 +460,7 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
     {
         if(!travaError)
         {
+            CameraController.instance.shake();
             error++;
             audioController.playFx(audioController.fxError, 1);
         }
