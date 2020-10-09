@@ -12,13 +12,6 @@ public class AnimaObjetos : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Inicio "+ BancoPlayerprefs.instance.LerInformacoesInt(BancoPlayerprefs.CONST_TUTORIAL));
-        if (BancoPlayerprefs.instance.LerInformacoesInt(BancoPlayerprefs.CONST_TUTORIAL) == 1)
-        {
-            Debug.Log("IF DENTRO");
-            this.gameObject.SetActive(false);
-            Debug.Log("FIM IF");
-        }
         animator = GetComponent<Animator>();
         if (escrever)
         {
@@ -29,6 +22,10 @@ public class AnimaObjetos : MonoBehaviour
         } else if(semClick) 
         {
             animator.SetBool("arrasta", true);
+        }
+        if (BancoPlayerprefs.instance.LerInformacoesInt(BancoPlayerprefs.CONST_TUTORIAL) == 1)
+        {
+            this.gameObject.SetActive(false);
         }
     }
 

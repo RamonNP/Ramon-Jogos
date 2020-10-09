@@ -51,4 +51,24 @@ public class PlayServices : MonoBehaviour
             LeaderboardTimeSpan.AllTime, (LeaderboardScoreData data) => { score = data.PlayerScore.value; });
         return score;
     }
+
+    public static void conquista(string id)
+    {
+        //BancoPlayerprefs.instance.LerInformacoesString(id);
+        if (BancoPlayerprefs.instance.LerInformacoesString("EOPANELA") == null)
+        {
+            BancoPlayerprefs.instance.GravarInformacoesString(id,"1");
+            int valor = BancoPlayerprefs.instance.LerInformacoesInt("EO");
+            if (valor == 0)
+            {
+                BancoPlayerprefs.instance.GravarInformacoesInt("EO", 1);
+            } else
+            {
+                valor++;
+                BancoPlayerprefs.instance.GravarInformacoesInt("EO", valor);
+            }
+        }
+    }
+
+
 }

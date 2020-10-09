@@ -91,7 +91,6 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
 
     void Start()
     {
-        AdmobManager.instance.RequestBanner();
         audioController = FindObjectOfType(typeof(AudioController)) as AudioController;
         audioController.fxFrase = audioItem[faseAtual];
         palavra = palavras[faseAtual];
@@ -99,6 +98,7 @@ public class GCEscreverDinamicoObjetos : GameControllerBase
         montarPalavra();
         obj3.GetComponent<SpriteRenderer>().sprite = spriteItem[faseAtual];
         atualizarPontos(false);
+        AdmobManager.instance.RequestBanner();
     }
    
     // Update is called once per frame

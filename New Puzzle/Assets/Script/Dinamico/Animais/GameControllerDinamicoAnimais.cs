@@ -471,6 +471,7 @@ public class GameControllerDinamicoAnimais : GameControllerBase
         right++;
         if (right >= pontos)
         {
+            //PlayServices.conquista(GooglePlayServiceConquistas.leaderboard_ranking_principal);
             victory();
             atualizarPontos(true);
             atualizarConquistaPontos();
