@@ -15,6 +15,7 @@ public class MODinamicoEscrever : MonoBehaviour
     private float deltaX, deltaY;
 
     public bool locked;
+    public bool silaba;
     private IEnumerator coroutine;
     public int objOk;
     //efeito quando arrasta pega aumenta.
@@ -32,7 +33,10 @@ public class MODinamicoEscrever : MonoBehaviour
         initialPosition = transform.position;
         z = 1;
         locked = true;
-        moveInitial();
+        if (!silaba)
+        {
+            moveInitial();
+        }
         //moveInitial(Transform transform, float xDest, float yDest)
 
     }
